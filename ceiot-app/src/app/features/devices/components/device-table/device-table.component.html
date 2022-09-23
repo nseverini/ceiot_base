@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Key</th>
+  </tr>
+  <tr *ngFor="let device of devices">
+    <td>{{ device._id }}</td>
+    <td>{{ device.name }}</td>
+    <td>{{ device.key }}</td>
+  </tr>
+</table>
