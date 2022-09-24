@@ -13,12 +13,15 @@ import * as mongoose from 'mongoose';
 import { json, urlencoded } from 'body-parser';
 import * as compression from 'compression';
 import helmet from 'helmet';
+import * as dotenv from 'dotenv';
+const bodyParserErrorHandler = require('express-body-parser-error-handler');
 
 import deviceRoutes from './routes/device.routes';
 import measurementRoutes from './routes/measurement.routes';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
+  dotenv.config();
   const server = express();
   const distFolder = join(process.cwd(), 'dist/ceiot-app/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html'))
@@ -41,10 +44,11 @@ export function app(): express.Express {
   server.use(json());
   server.use(urlencoded({ extended: true }));
 
+  server.use(bodyParserErrorHandler());
+
   server.use(helmet());
 
-  const connectionString =
-    'mongodb+srv://admin:admin@prototype.bbz2tsb.mongodb.net/?retryWrites=true&w=majority';
+  const connectionString = process.env['MONGODB_URL'] as string;
   mongoose
     .connect(connectionString)
     .then(() => console.log('Database connected successfully!'))

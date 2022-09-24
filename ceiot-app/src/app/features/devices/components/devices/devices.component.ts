@@ -13,6 +13,10 @@ export class DevicesComponent implements OnInit {
   constructor(private deviceService: DeviceService) {}
 
   ngOnInit(): void {
-    this.devices$ = this.deviceService.findAll();
+    this.getDevices();
+  }
+
+  private getDevices(): void {
+    this.devices$ = this.deviceService.getAll();
   }
 }

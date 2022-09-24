@@ -1,0 +1,20 @@
+<form [formGroup]="deviceForm" (ngSubmit)="submit()">
+  <label for="id">Id: </label>
+  <input id="id" type="text" formControlName="_id" />
+  <div *ngIf="_id?.invalid && (_id?.dirty || _id?.touched)">
+    <div *ngIf="_id?.errors?.['pattern']">Id is invalid.</div>
+  </div>
+
+  <label for="name">Name: </label>
+  <input id="name" type="text" formControlName="name" />
+
+  <label for="key">Key: </label>
+  <input id="key" type="text" formControlName="key" required />
+  <div *ngIf="key?.invalid && (key?.dirty || key?.touched)">
+    <div *ngIf="key?.errors?.['required']">Key is required.</div>
+  </div>
+
+  <button type="submit" [disabled]="!deviceForm.valid">
+    {{ labelSubmit }}
+  </button>
+</form>

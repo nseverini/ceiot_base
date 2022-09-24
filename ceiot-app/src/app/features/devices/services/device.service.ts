@@ -8,9 +8,26 @@ import { Device } from '../models/device';
   providedIn: 'root',
 })
 export class DeviceService {
+  url: string = `${environment.apiUrl}/devices`;
   constructor(private httpClient: HttpClient) {}
 
-  findAll(): Observable<Device[]> {
-    return this.httpClient.get<Device[]>(environment.apiUrl + 'devices');
+  getAll(): Observable<Device[]> {
+    return this.httpClient.get<Device[]>(this.url);
+  }
+
+  getOne(deviceId: string): Observable<Device> {
+    return this.httpClient.get<Device>(`${this.url}/${deviceId}`);
+  }
+
+  create(device: Device): Observable<Device> {
+    return this.httpClient.post<Device>(`${this.url}`, device);
+  }
+
+  update(device: Device): Observable<Device> {
+    return this.httpClient.put<Device>(`${this.url}/${device._id}`, device);
+  }
+
+  delete(deviceId: string): Observable<Device> {
+    return this.httpClient.delete<Device>(`${this.url}/${deviceId}`);
   }
 }

@@ -26,22 +26,23 @@
 #include "../config.h"
 
 /* HTTP constants that aren't configurable in menuconfig */
-#define WEB_PATH "/measurement"
+#define WEB_PATH "/api/measurements"
 
 static const char *TAG = "temp_collector";
 
-static char *BODY = "id="DEVICE_ID"&t=%0.2f&h=%0.2f";
+static char *BODY = "{\"device\":\""DEVICE_ID"\",\"key\":\""DEVICE_KEY"\",\"temperature\":%0.2f,\"humidity\":%0.2f,\"pressure\":%0.2f,\"time_sended\":\"23-1-2022\"}";
+
 
 static char *REQUEST_POST = "POST "WEB_PATH" HTTP/1.0\r\n"
     "Host: "API_IP_PORT"\r\n"
     "User-Agent: "USER_AGENT"\r\n"
-    "Content-Type: application/x-www-form-urlencoded\r\n"
+    "Content-Type: application/json\r\n"
     "Content-Length: %d\r\n"
     "\r\n"
     "%s";
 
 static void http_get_task(void *pvParameters)
-{
+{  
     const struct addrinfo hints = {
         .ai_family = AF_INET,
         .ai_socktype = SOCK_STREAM,
@@ -49,8 +50,8 @@ static void http_get_task(void *pvParameters)
     struct addrinfo *res;
     struct in_addr *addr;
     int s, r;
-    char body[64];
-    char recv_buf[64];
+    char body[128];
+    char recv_buf[128];
 
     char send_buf[256];
 
