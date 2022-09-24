@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject, catchError, finalize, throwError } from 'rxjs';
 import { Device } from '../../models/device';
 import { DeviceService } from '../../services/device.service';
 
@@ -18,6 +20,13 @@ export class DeviceFormComponent implements OnInit {
     name: [''],
     key: ['', Validators.required],
   });
+  isDataLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
+  isOperationLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
+  errorMessages$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
   constructor(
     private route: ActivatedRoute,
@@ -30,8 +39,8 @@ export class DeviceFormComponent implements OnInit {
     this.getDeviceId();
 
     if (this.deviceId) {
-      this.getDevice();
       this.labelSubmit = 'Update';
+      this.getDevice();
     }
   }
 
@@ -54,6 +63,14 @@ export class DeviceFormComponent implements OnInit {
   private getDevice(): void {
     this.deviceService
       .getOne(this.deviceId as string)
+      .pipe(
+        finalize(() => alert('TERMINO!')),
+        catchError((error: HttpErrorResponse) => {
+          const errorMessages = error.error?.message;
+          this.errorMessages$.next(errorMessages);
+          return throwError(() => error);
+        })
+      )
       .subscribe((device: Device) => {
         this.deviceForm.patchValue(device);
       });
@@ -67,10 +84,19 @@ export class DeviceFormComponent implements OnInit {
         ? 'Device updated successfully'
         : 'Device created successfully';
 
-      this.deviceService[operation](device).subscribe(() => {
-        alert(successMessage);
-        this.router.navigate(['/devices']);
-      });
+      this.deviceService[operation](device)
+        .pipe(
+          finalize(() => alert('TERMINO!')),
+          catchError((error: HttpErrorResponse) => {
+            const errorMessages = error.error?.message;
+            this.errorMessages$.next(errorMessages);
+            return throwError(() => error);
+          })
+        )
+        .subscribe(() => {
+          alert(successMessage);
+          this.router.navigate(['/devices']);
+        });
     }
   }
 

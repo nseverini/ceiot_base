@@ -37,6 +37,19 @@ deviceRouter.get('/:id', async (request: Request, response: Response) => {
 
 deviceRouter.post('/', async (request: Request, response: Response) => {
   try {
+    const deviceId = request.body._id;
+    if (deviceId) {
+      const isValid = mongoose.isValidObjectId(deviceId);
+      if (!isValid) {
+        return response.status(400).json('Invalid Device Id');
+      }
+
+      const isUnique = await Device.findById(deviceId).count().exec();
+      if (isUnique) {
+        return response.status(400).send('Duplicated Device Id');
+      }
+    }
+
     const device = await Device.create(request.body);
     return response.status(200).json(device);
   } catch (error) {
