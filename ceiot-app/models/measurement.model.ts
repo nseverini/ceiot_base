@@ -19,7 +19,7 @@ const MeasurementSchema: Schema = new Schema(
       type: Number,
       required: true,
     },
-    time_sended: {
+    time_sent: {
       type: Date,
       required: true,
     },

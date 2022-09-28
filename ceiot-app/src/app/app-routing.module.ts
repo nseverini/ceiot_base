@@ -9,19 +9,24 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'devices',
+      },
+      {
         path: 'devices',
         loadChildren: () =>
           import('./features/devices/devices.module').then(
             (m) => m.DevicesModule
           ),
       },
-      {
-        path: 'error/:code',
-        component: ErrorComponent,
-      },
-      { path: '**', redirectTo: '/error/404' },
     ],
   },
+  {
+    path: 'error/:code',
+    component: ErrorComponent,
+  },
+  { path: '**', redirectTo: '/error/404' },
 ];
 
 @NgModule({

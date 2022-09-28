@@ -1,1 +1,14 @@
-<p>error works!</p>
+<ng-container *ngIf="error$ | async as error">
+  <div class="error-wrapper">
+    <div class="error-wrapper__error">
+      <div class="error-wrapper__header">
+        <h1 class="error-wrapper__title">{{ error.status }}</h1>
+      </div>
+      <h2 class="error-wrapper__subtitle">Oops!</h2>
+      <p class="error-wrapper__text">
+        {{ error.error }}
+      </p>
+      <a mat-stroked-button routerLink="/"> Back to home </a>
+    </div>
+  </div>
+</ng-container>

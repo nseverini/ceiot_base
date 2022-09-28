@@ -1,0 +1,17 @@
+.navbar {
+  height: 64px;
+
+  &__image {
+    height: 75%;
+    cursor: pointer;
+  }
+}
+
+.main {
+  height: calc(100vh - 64px);
+  overflow: hidden;
+
+  &__element {
+    padding: 25px;
+  }
+}

@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+<mat-toolbar class="navbar mat-elevation-z1">
+  <img
+    class="navbar__image"
+    src="assets/images/logo.png"
+    alt="FIUBA Logo"
+    routerLink="/devices"
+  />
+</mat-toolbar>
+<div class="main">
+  <div class="main__element">
+    <router-outlet></router-outlet>
+  </div>
+</div>

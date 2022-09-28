@@ -1,0 +1,25 @@
+.device {
+  min-height: 330px;
+
+  &__form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__form-field {
+    flex: 0 0 100%;
+  }
+
+  &__form-actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__spinner-wrapper {
+    min-height: 299px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

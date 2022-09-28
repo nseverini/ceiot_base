@@ -1,10 +1,21 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { Meta } from '@angular/platform-browser';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject, catchError, finalize, throwError } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  finalize,
+  of,
+  throwError,
+  EMPTY,
+} from 'rxjs';
 import { Device } from '../../models/device';
 import { DeviceService } from '../../services/device.service';
+import { AlertType } from 'src/app/shared/models/alert-type';
+// import { IdValidator } from '../../utils/id-validator';
 
 @Component({
   selector: 'app-device-form',
@@ -14,24 +25,30 @@ import { DeviceService } from '../../services/device.service';
 })
 export class DeviceFormComponent implements OnInit {
   private deviceId: string | null = null;
+  labelTitle: string = 'Create new device';
   labelSubmit: string = 'Create';
   deviceForm = this.fb.group({
-    _id: ['', Validators.pattern('^[0-9a-fA-F]{24}$')],
+    _id: [
+      '',
+      Validators.pattern('^[0-9a-fA-F]{24}$'),
+      // IdValidator.createValidator(this.deviceService),
+    ],
     name: [''],
     key: ['', Validators.required],
   });
-  isDataLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false
-  );
+  public AlertType = AlertType;
+  isDataLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   isOperationLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
-  errorMessages$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+  errorMessage$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   constructor(
+    private metaService: Meta,
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
+    private snackBarService: MatSnackBar,
     private deviceService: DeviceService
   ) {}
 
@@ -40,8 +57,24 @@ export class DeviceFormComponent implements OnInit {
 
     if (this.deviceId) {
       this.labelSubmit = 'Update';
+      this.labelTitle = 'Update device';
       this.getDevice();
+    } else {
+      this.isDataLoading$.next(false);
     }
+
+    this.setTags();
+  }
+
+  private setTags(): void {
+    this.metaService.updateTag({
+      property: 'og:title',
+      content: `CEIoT - ${this.labelTitle}`,
+    });
+    this.metaService.updateTag({
+      name: 'description',
+      content: `CEIoT - ${this.labelTitle}`,
+    });
   }
 
   get _id(): AbstractControl<string | null, string | null> | null {
@@ -64,10 +97,8 @@ export class DeviceFormComponent implements OnInit {
     this.deviceService
       .getOne(this.deviceId as string)
       .pipe(
-        finalize(() => alert('TERMINO!')),
+        finalize(() => this.isDataLoading$.next(false)),
         catchError((error: HttpErrorResponse) => {
-          const errorMessages = error.error?.message;
-          this.errorMessages$.next(errorMessages);
           return throwError(() => error);
         })
       )
@@ -77,24 +108,43 @@ export class DeviceFormComponent implements OnInit {
   }
 
   submit(): void {
+    this.errorMessage$.next('');
     if (this.deviceForm.valid) {
+      this.isOperationLoading$.next(true);
       const device = this.removeEmptyValues(this.deviceForm.value as Device);
       const operation = this.deviceId ? 'update' : 'create';
-      const successMessage = this.deviceId
-        ? 'Device updated successfully'
-        : 'Device created successfully';
 
       this.deviceService[operation](device)
         .pipe(
-          finalize(() => alert('TERMINO!')),
-          catchError((error: HttpErrorResponse) => {
-            const errorMessages = error.error?.message;
-            this.errorMessages$.next(errorMessages);
-            return throwError(() => error);
+          finalize(() => this.isOperationLoading$.next(false)),
+          catchError((error: string) => {
+            // catchError((error: HttpErrorResponse) => {
+            this.deviceForm.setErrors({ invalid: true });
+            this.errorMessage$.next(error);
+            return EMPTY;
+
+            // this.deviceForm.setErrors({ invalid: true });
+            // if (error.status == 400) {
+            //   const errorMessages =
+            //     typeof error?.error == 'string'
+            //       ? error.error
+            //       : error.error?.message;
+            //   this.errorMessage$.next(errorMessages);
+            // }
+            // return throwError(() => error);
           })
         )
         .subscribe(() => {
-          alert(successMessage);
+          const successMessage = this.deviceId
+            ? 'Device updated successfully'
+            : 'Device created successfully';
+
+          this.snackBarService.open(successMessage, undefined, {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+          });
+
           this.router.navigate(['/devices']);
         });
     }

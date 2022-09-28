@@ -1,20 +1,75 @@
-<form [formGroup]="deviceForm" (ngSubmit)="submit()">
-  <label for="id">Id: </label>
-  <input id="id" type="text" formControlName="_id" />
-  <div *ngIf="_id?.invalid && (_id?.dirty || _id?.touched)">
-    <div *ngIf="_id?.errors?.['pattern']">Id is invalid.</div>
-  </div>
+<mat-card class="device">
+  <mat-card-header>
+    <mat-card-title>{{ labelTitle }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <app-alert [message]="errorMessage$ | async"></app-alert>
 
-  <label for="name">Name: </label>
-  <input id="name" type="text" formControlName="name" />
+    <ng-container *ngIf="!(isDataLoading$ | async); else isDataLoadingTemplate">
+      <form class="device__form" [formGroup]="deviceForm" (ngSubmit)="submit()">
+        <mat-form-field class="device__form-field" appearance="outline">
+          <mat-label>Id</mat-label>
+          <input matInput type="text" formControlName="_id" />
+          <mat-error *ngIf="_id?.invalid && (_id?.dirty || _id?.touched)">
+            <ng-container *ngIf="_id?.errors?.['pattern']">
+              Id is invalid
+            </ng-container>
+            <!-- <ng-container *ngIf="_id?.errors?.['_idAlreadyExist']">
+              Id already exist
+            </ng-container> -->
+          </mat-error>
+        </mat-form-field>
 
-  <label for="key">Key: </label>
-  <input id="key" type="text" formControlName="key" required />
-  <div *ngIf="key?.invalid && (key?.dirty || key?.touched)">
-    <div *ngIf="key?.errors?.['required']">Key is required.</div>
-  </div>
+        <mat-form-field class="device__form-field" appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" formControlName="name" />
+        </mat-form-field>
 
-  <button type="submit" [disabled]="!deviceForm.valid">
-    {{ labelSubmit }}
-  </button>
-</form>
+        <mat-form-field class="device__form-field" appearance="outline">
+          <mat-label>Key</mat-label>
+          <input matInput type="text" formControlName="key" required />
+          <mat-error *ngIf="key?.invalid && (key?.dirty || key?.touched)">
+            <ng-container *ngIf="key?.errors?.['required']">
+              Key is required
+            </ng-container>
+          </mat-error>
+        </mat-form-field>
+
+        <div class="device__form-actions">
+          <button
+            mat-stroked-button
+            type="submit"
+            [disabled]="!deviceForm.valid || (isOperationLoading$ | async)"
+          >
+            <ng-container
+              *ngIf="
+                !(isOperationLoading$ | async);
+                else isOperationLoadingTemplate
+              "
+            >
+              {{ labelSubmit }}
+            </ng-container>
+            <ng-template #isOperationLoadingTemplate>
+              <mat-icon
+                ><mat-spinner
+                  [diameter]="20"
+                  mode="indeterminate"
+                  strokeWidth="11%"
+                ></mat-spinner
+              ></mat-icon>
+            </ng-template>
+          </button>
+          <button mat-stroked-button type="submit" routerLink="/devices">
+            Go back
+          </button>
+        </div>
+      </form>
+    </ng-container>
+    <ng-template #isDataLoadingTemplate>
+      <div class="device__spinner-wrapper">
+        <mat-progress-spinner color="primary" mode="indeterminate">
+        </mat-progress-spinner>
+      </div>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

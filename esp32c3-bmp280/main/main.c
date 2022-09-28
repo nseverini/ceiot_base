@@ -30,7 +30,7 @@
 
 static const char *TAG = "temp_collector";
 
-static char *BODY = "{\"device\":\""DEVICE_ID"\",\"key\":\""DEVICE_KEY"\",\"temperature\":%0.2f,\"humidity\":%0.2f,\"pressure\":%0.2f,\"time_sended\":\"23-1-2022\"}";
+static char *BODY = "{\"device\":\""DEVICE_ID"\",\"key\":\""DEVICE_KEY"\",\"temperature\":%0.2f,\"humidity\":%0.2f,\"pressure\":%0.2f,\"time_sent\":\"23-1-2022\"}";
 
 
 static char *REQUEST_POST = "POST "WEB_PATH" HTTP/1.0\r\n"

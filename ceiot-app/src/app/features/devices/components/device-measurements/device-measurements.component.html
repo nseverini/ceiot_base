@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Device measurements</h1>
+<div class="device-measurement" mat-dialog-content>
+  <ng-container *ngIf="measurements$ | async as measurements">
+    <ng-container *ngIf="!(isDataLoading$ | async); else isDataLoadingTemplate">
+      <div
+        class="device-measurement__chart"
+        echarts
+        [options]="chartOption"
+      ></div>
+    </ng-container>
+    <ng-template #isDataLoadingTemplate>
+      <mat-spinner></mat-spinner>
+    </ng-template>
+  </ng-container>
+</div>

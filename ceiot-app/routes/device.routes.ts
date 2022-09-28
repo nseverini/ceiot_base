@@ -20,7 +20,8 @@ deviceRouter.get('/:id', async (request: Request, response: Response) => {
     const idValid = mongoose.isValidObjectId(deviceId);
 
     if (!idValid) {
-      return response.status(400).send('Invalid Device Id');
+      return response.status(404).json('Device Not Found');
+      // return response.status(400).send('Invalid Device Id');
     }
 
     const device = await Device.findById(deviceId).exec();
@@ -53,7 +54,12 @@ deviceRouter.post('/', async (request: Request, response: Response) => {
     const device = await Device.create(request.body);
     return response.status(200).json(device);
   } catch (error) {
-    return response.status(500).json(error);
+    const errorMessage = (error as Error).message;
+    const status = errorMessage.toLowerCase().includes('validation')
+      ? 400
+      : 500;
+
+    return response.status(status).json(error);
   }
 });
 
@@ -65,7 +71,8 @@ deviceRouter.get(
       const idValid = mongoose.isValidObjectId(deviceId);
 
       if (!idValid) {
-        return response.status(400).send('Invalid Device Id');
+        return response.status(404).json('Device Not Found');
+        // return response.status(400).send('Invalid Device Id');
       }
 
       const device = await Device.findById(deviceId).exec();
@@ -104,7 +111,12 @@ deviceRouter.put('/:id', async (request: Request, response: Response) => {
 
     return response.status(200).json(device);
   } catch (error) {
-    return response.status(500).json(error);
+    const errorMessage = (error as Error).message;
+    const status = errorMessage.toLowerCase().includes('validation')
+      ? 400
+      : 500;
+
+    return response.status(status).json(error);
   }
 });
 
@@ -114,7 +126,8 @@ deviceRouter.delete('/:id', async (request: Request, response: Response) => {
     const idValid = mongoose.isValidObjectId(deviceId);
 
     if (!idValid) {
-      return response.status(400).send('Invalid Device Id');
+      return response.status(404).send('Device Not Found');
+      // return response.status(400).send('Invalid Device Id');
     }
 
     const session = await Device.startSession();

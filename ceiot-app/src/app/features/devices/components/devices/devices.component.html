@@ -1,1 +1,8 @@
-<app-device-table [devices]="devices$ | async"></app-device-table>
+<app-device-table
+  [devices]="devices$ | async"
+  [isDataLoading]="isDataLoading$ | async"
+  (removeDeviceEvent)="confirmationRemoveDevice($event)"
+  (refreshDevicesEvent)="getDevices()"
+  (openMeasurementsModalEvent)="openMeasurementsModal($event)"
+  (copyDeviceIdEvent)="copyDeviceId($event)"
+></app-device-table>

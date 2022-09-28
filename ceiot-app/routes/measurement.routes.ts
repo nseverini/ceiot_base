@@ -20,7 +20,8 @@ measurementRouter.get('/:id', async (request: Request, response: Response) => {
     const idValid = mongoose.isValidObjectId(measurementId);
 
     if (!idValid) {
-      return response.status(400).send('Invalid Measurement Id');
+      return response.status(404).json('Measurement Not Found');
+      // return response.status(400).send('Invalid Measurement Id');
     }
 
     const measurement = await Measurement.findById(measurementId).exec();
@@ -59,11 +60,16 @@ measurementRouter.post('/', async (request: Request, response: Response) => {
       };
       await Device.create(deviceModel);
     }
-
-    const measurement = await Measurement.create(request.body);
+    newMeasurement.time_sent = new Date(newMeasurement.time_sent * 1000);
+    const measurement = await Measurement.create(newMeasurement);
     return response.status(200).json(measurement);
   } catch (error) {
-    return response.status(500).json(error);
+    const errorMessage = (error as Error).message;
+    const status = errorMessage.toLowerCase().includes('validation')
+      ? 400
+      : 500;
+
+    return response.status(status).json(error);
   }
 });
 
@@ -75,7 +81,8 @@ measurementRouter.delete(
       const idValid = mongoose.isValidObjectId(measurementId);
 
       if (!idValid) {
-        return response.status(400).send('Invalid Measurement Id');
+        return response.status(404).send('Measurement Not Found');
+        // return response.status(400).send('Invalid Measurement Id');
       }
 
       const measurement = await Measurement.findById(measurementId).exec();

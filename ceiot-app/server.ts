@@ -3,7 +3,7 @@ import 'zone.js/dist/zone-node';
 import { APP_BASE_HREF } from '@angular/common';
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
-import { Router, Request, Response } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 import { existsSync } from 'fs';
 import { join } from 'path';
 
@@ -33,6 +33,7 @@ export function app(): express.Express {
     'html',
     ngExpressEngine({
       bootstrap: AppServerModule,
+      inlineCriticalCss: false,
     })
   );
 
