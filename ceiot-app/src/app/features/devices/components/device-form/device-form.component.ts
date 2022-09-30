@@ -56,9 +56,9 @@ export class DeviceFormComponent implements OnInit {
     this.getDeviceId();
 
     if (this.deviceId) {
-      this.labelSubmit = 'Update';
-      this.labelTitle = 'Update device';
+      this.setLabels();
       this.getDevice();
+      this.deviceForm.controls._id.disable();
     } else {
       this.isDataLoading$.next(false);
     }
@@ -75,6 +75,11 @@ export class DeviceFormComponent implements OnInit {
       name: 'description',
       content: `CEIoT - ${this.labelTitle}`,
     });
+  }
+
+  private setLabels(): void {
+    this.labelSubmit = 'Update';
+    this.labelTitle = 'Update device';
   }
 
   get _id(): AbstractControl<string | null, string | null> | null {

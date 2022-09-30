@@ -99,6 +99,10 @@ deviceRouter.put('/:id', async (request: Request, response: Response) => {
       return response.status(400).send('Invalid Device Id');
     }
 
+    if (deviceId != request.body._id) {
+      return response.status(400).send('Invalid Device Id');
+    }
+
     const device = await Device.findByIdAndUpdate(
       deviceId,
       { $set: request.body },
