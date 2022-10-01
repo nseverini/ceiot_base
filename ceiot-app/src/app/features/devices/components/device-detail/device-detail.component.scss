@@ -1,0 +1,34 @@
+.device-detail {
+  padding: 0px;
+
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    padding: 16px 16px 0px 0px;
+  }
+
+  &__actions {
+    padding-right: 16px;
+  }
+
+  &__table-wrapper {
+    overflow: auto;
+    height: calc(100vh - 250px);
+  }
+
+  &__table {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  &__spinner-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

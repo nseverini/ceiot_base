@@ -21,7 +21,6 @@ measurementRouter.get('/:id', async (request: Request, response: Response) => {
 
     if (!idValid) {
       return response.status(404).json('Measurement Not Found');
-      // return response.status(400).send('Invalid Measurement Id');
     }
 
     const measurement = await Measurement.findById(measurementId).exec();
@@ -82,7 +81,6 @@ measurementRouter.delete(
 
       if (!idValid) {
         return response.status(404).send('Measurement Not Found');
-        // return response.status(400).send('Invalid Measurement Id');
       }
 
       const measurement = await Measurement.findById(measurementId).exec();

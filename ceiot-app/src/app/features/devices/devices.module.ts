@@ -22,6 +22,7 @@ import { DeviceFormComponent } from './components/device-form/device-form.compon
 import { DeviceMeasurementsComponent } from './components/device-measurements/device-measurements.component';
 
 import { SharedModule } from 'src/app/shared/shared.module';
+import { DeviceDetailComponent } from './components/device-detail/device-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     DeviceTableComponent,
     DeviceFormComponent,
     DeviceMeasurementsComponent,
+    DeviceDetailComponent,
   ],
   imports: [
     CommonModule,

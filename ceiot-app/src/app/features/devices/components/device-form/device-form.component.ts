@@ -14,8 +14,6 @@ import {
 } from 'rxjs';
 import { Device } from '../../models/device';
 import { DeviceService } from '../../services/device.service';
-import { AlertType } from 'src/app/shared/models/alert-type';
-// import { IdValidator } from '../../utils/id-validator';
 
 @Component({
   selector: 'app-device-form',
@@ -28,15 +26,10 @@ export class DeviceFormComponent implements OnInit {
   labelTitle: string = 'Create new device';
   labelSubmit: string = 'Create';
   deviceForm = this.fb.group({
-    _id: [
-      '',
-      Validators.pattern('^[0-9a-fA-F]{24}$'),
-      // IdValidator.createValidator(this.deviceService),
-    ],
+    _id: ['', Validators.pattern('^[0-9a-fA-F]{24}$')],
     name: [''],
     key: ['', Validators.required],
   });
-  public AlertType = AlertType;
   isDataLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   isOperationLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
@@ -123,20 +116,9 @@ export class DeviceFormComponent implements OnInit {
         .pipe(
           finalize(() => this.isOperationLoading$.next(false)),
           catchError((error: string) => {
-            // catchError((error: HttpErrorResponse) => {
             this.deviceForm.setErrors({ invalid: true });
             this.errorMessage$.next(error);
             return EMPTY;
-
-            // this.deviceForm.setErrors({ invalid: true });
-            // if (error.status == 400) {
-            //   const errorMessages =
-            //     typeof error?.error == 'string'
-            //       ? error.error
-            //       : error.error?.message;
-            //   this.errorMessage$.next(errorMessages);
-            // }
-            // return throwError(() => error);
           })
         )
         .subscribe(() => {

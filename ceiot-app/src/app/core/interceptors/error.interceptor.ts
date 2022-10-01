@@ -19,14 +19,6 @@ export class ErrorInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        // if (
-        //   error.status != 400 &&
-        //   !error.error?.message.toLowerCase().includes('validation')
-        // ) {
-        //   this.router.navigate(['/error/' + error.status]);
-        // }
-        // return throwError(() => error);
-
         if (error.status == 400) {
           let errorMessage: string;
           errorMessage =

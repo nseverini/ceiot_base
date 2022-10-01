@@ -22,7 +22,6 @@ deviceRouter.get('/color/:id', async (request: Request, response: Response) => {
 
     if (!idValid) {
       return response.status(404).json('Device Not Found');
-      // return response.status(400).send('Invalid Device Id');
     }
 
     const device = await Device.findById(deviceId).exec();
@@ -72,7 +71,6 @@ deviceRouter.get('/:id', async (request: Request, response: Response) => {
 
     if (!idValid) {
       return response.status(404).json('Device Not Found');
-      // return response.status(400).send('Invalid Device Id');
     }
 
     const device = await Device.findById(deviceId).exec();
@@ -123,7 +121,6 @@ deviceRouter.get(
 
       if (!idValid) {
         return response.status(404).json('Device Not Found');
-        // return response.status(400).send('Invalid Device Id');
       }
 
       const device = await Device.findById(deviceId).exec();
@@ -182,7 +179,6 @@ deviceRouter.delete('/:id', async (request: Request, response: Response) => {
 
     if (!idValid) {
       return response.status(404).send('Device Not Found');
-      // return response.status(400).send('Invalid Device Id');
     }
 
     const session = await Device.startSession();

@@ -2,11 +2,23 @@
 <div class="device-measurement" mat-dialog-content>
   <ng-container *ngIf="measurements$ | async as measurements">
     <ng-container *ngIf="!(isDataLoading$ | async); else isDataLoadingTemplate">
-      <div
-        class="device-measurement__chart"
-        echarts
-        [options]="chartOption"
-      ></div>
+      <ng-container
+        *ngIf="measurements && measurements.length > 0; else noDataTemplate"
+      >
+        <div
+          class="device-measurement__chart"
+          echarts
+          [options]="chartOption"
+        ></div>
+      </ng-container>
+      <ng-template #noDataTemplate>
+        <div style="width: 100%">
+          <app-alert
+            [message]="noMeasurementsMessage"
+            [type]="AlertType['alert--info']"
+          ></app-alert>
+        </div>
+      </ng-template>
     </ng-container>
     <ng-template #isDataLoadingTemplate>
       <mat-spinner></mat-spinner>

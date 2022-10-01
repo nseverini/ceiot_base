@@ -18,6 +18,7 @@ import {
 import { DeviceMeasurementsDialogData } from 'src/app/shared/models/device-measurements-dialog-data';
 import { Measurement } from '../../models/measurement';
 import { DeviceService } from '../../services/device.service';
+import { AlertType } from 'src/app/shared/models/alert-type';
 
 @Component({
   selector: 'app-device-measurements',
@@ -29,6 +30,9 @@ export class DeviceMeasurementsComponent implements OnInit {
   measurements$!: Observable<Measurement[]>;
   isDataLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   chartOption!: EChartsOption;
+  noMeasurementsMessage: string = 'Device without measurements';
+  public AlertType = AlertType;
+
   constructor(
     private dialogRef: MatDialogRef<DeviceMeasurementsComponent>,
     @Inject(MAT_DIALOG_DATA) private data: DeviceMeasurementsDialogData,
