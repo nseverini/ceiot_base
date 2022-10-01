@@ -18,6 +18,7 @@ const bodyParserErrorHandler = require('express-body-parser-error-handler');
 
 import deviceRoutes from './routes/device.routes';
 import measurementRoutes from './routes/measurement.routes';
+import adminRoutes from './routes/admin.routes';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -55,6 +56,7 @@ export function app(): express.Express {
     .then(() => console.log('Database connected successfully!'))
     .catch((err) => console.error(err));
 
+  server.use('/api/admin', adminRoutes);
   server.use('/api/devices', deviceRoutes);
   server.use('/api/measurements', measurementRoutes);
   server.use('/api/*', (request: Request, response: Response) => {

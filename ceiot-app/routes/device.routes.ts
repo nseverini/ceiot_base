@@ -2,6 +2,7 @@ import { Router, Request, Response } from 'express';
 import Device from 'models/device.model';
 import Measurement from 'models/measurement.model';
 import mongoose from 'mongoose';
+import { render } from 'utils/render';
 
 const deviceRouter = Router();
 
@@ -10,6 +11,56 @@ deviceRouter.get('/', async (request: Request, response: Response) => {
     const devices = await Device.find().exec();
     return response.status(200).json(devices);
   } catch (error) {
+    return response.status(500).json(error);
+  }
+});
+
+deviceRouter.get('/color/:id', async (request: Request, response: Response) => {
+  try {
+    const deviceId = request.params['id'];
+    const idValid = mongoose.isValidObjectId(deviceId);
+
+    if (!idValid) {
+      return response.status(404).json('Device Not Found');
+      // return response.status(400).send('Invalid Device Id');
+    }
+
+    const device = await Device.findById(deviceId).exec();
+
+    if (!device) {
+      return response.status(404).json('Device Not Found');
+    }
+
+    const red = '\x1b[31m';
+    const green = '\x1b[32m';
+    const blue = '\x1b[33m';
+    const reset = '\x1b[0m';
+    const template =
+      'Device name ' +
+      red +
+      '   {{name}}' +
+      reset +
+      '\n' +
+      '       id   ' +
+      green +
+      '       {{ id }} ' +
+      reset +
+      '\n' +
+      '       key  ' +
+      blue +
+      '  {{ key }}' +
+      reset +
+      '\n';
+
+    return response.send(
+      render(template, {
+        id: device._id,
+        key: device['key'],
+        name: device['name'],
+      })
+    );
+  } catch (error) {
+    console.log(error);
     return response.status(500).json(error);
   }
 });

@@ -1,2 +1,2 @@
-wget -O output.txt "http://localhost:8080/measurement"
+wget -O output.txt "http://localhost:4200/api/measurements"
 cat output.txt
