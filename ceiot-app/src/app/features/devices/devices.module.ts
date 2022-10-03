@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatMenuModule } from '@angular/material/menu';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { NgxEchartsModule } from 'ngx-echarts';
 
@@ -47,6 +48,7 @@ import { DeviceDetailComponent } from './components/device-detail/device-detail.
     MatSnackBarModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatMenuModule,
     ClipboardModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),

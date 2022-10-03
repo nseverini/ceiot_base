@@ -1,4 +1,4 @@
-export function render(template: string, vars: any) {
+export function render(template: string, vars: any): string {
   const regexp = /<<(.*?)>>|\{\{(.*?)\}\}/;
   return template
     .split('\n')
