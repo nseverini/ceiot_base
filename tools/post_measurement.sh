@@ -1,1 +1,1 @@
-wget -O - --method=POST http://localhost:4200/api/measurements --body-data='{"device":"633521e94d7115ec6eefafa8","temperature":"21","humidity":"49.54","pressure":"1005.14","key":"3", "time_sent":"1664594224"}' --header="Content-Type: application/json"
+wget -O - --method=POST http://localhost:4200/api/measurements --body-data='{"device":"633521e94d7115ec6eefafa8","temperature":"21","humidity":"49.54","pressure":"1005.14","key":"3"}' --header="Content-Type: application/json"

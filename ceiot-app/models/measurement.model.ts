@@ -22,6 +22,7 @@ const MeasurementSchema: Schema = new Schema(
     time_sent: {
       type: Date,
       required: true,
+      default: Date.now(),
     },
     time_received: {
       type: Date,

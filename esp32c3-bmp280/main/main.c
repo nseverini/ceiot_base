@@ -30,7 +30,7 @@
 
 static const char *TAG = "temp_collector";
 
-static char *BODY = "{\"device\":\""DEVICE_ID"\",\"key\":\""DEVICE_KEY"\",\"temperature\":%0.2f,\"humidity\":%0.2f,\"pressure\":%0.2f,\"time_sent\":\"23-1-2022\"}";
+static char *BODY = "{\"device\":\""DEVICE_ID"\",\"key\":\""DEVICE_KEY"\",\"temperature\":%0.2f,\"humidity\":%0.2f,\"pressure\":%0.2f}";
 
 
 static char *REQUEST_POST = "POST "WEB_PATH" HTTP/1.0\r\n"
@@ -76,7 +76,7 @@ static void http_get_task(void *pvParameters)
         } else {
             ESP_LOGI(TAG, "Pressure: %.2f Pa, Temperature: %.2f C", pressure, temperature);
 //            if (bme280p) {
-                ESP_LOGI(TAG,", Humidity: %.2f\n", humidity);
+                ESP_LOGI(TAG,", Humidity: %.2f\n", humidity, pressure);
 		sprintf(body, BODY, temperature , humidity );
                 sprintf(send_buf, REQUEST_POST, (int)strlen(body),body );
 //	    } else {

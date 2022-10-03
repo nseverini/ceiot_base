@@ -59,7 +59,7 @@ measurementRouter.post('/', async (request: Request, response: Response) => {
       };
       await Device.create(deviceModel);
     }
-    newMeasurement.time_sent = new Date(newMeasurement.time_sent * 1000);
+
     const measurement = await Measurement.create(newMeasurement);
     return response.status(200).json(measurement);
   } catch (error) {

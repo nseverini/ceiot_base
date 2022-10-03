@@ -99,7 +99,7 @@ export class DeviceMeasurementsComponent implements OnInit {
             legend: {
               show: true,
               data: ['Temperature', 'Humidity', 'Pressure'],
-              top: 'bottom',
+              top: 'top',
             },
             dataZoom: {
               show: true,
@@ -115,8 +115,8 @@ export class DeviceMeasurementsComponent implements OnInit {
                 },
                 markPoint: {
                   data: [
-                    { type: 'max', name: 'Max' },
-                    { type: 'min', name: 'Min' },
+                    { type: 'max', name: 'Max', itemStyle: { color: 'green' } },
+                    { type: 'min', name: 'Min', itemStyle: { color: 'red' } },
                   ],
                 },
                 markLine: {
@@ -133,8 +133,8 @@ export class DeviceMeasurementsComponent implements OnInit {
                 },
                 markPoint: {
                   data: [
-                    { type: 'max', name: 'Max' },
-                    { type: 'min', name: 'Min' },
+                    { type: 'max', name: 'Max', itemStyle: { color: 'green' } },
+                    { type: 'min', name: 'Min', itemStyle: { color: 'red' } },
                   ],
                 },
                 markLine: {
@@ -151,8 +151,8 @@ export class DeviceMeasurementsComponent implements OnInit {
                 },
                 markPoint: {
                   data: [
-                    { type: 'max', name: 'Max' },
-                    { type: 'min', name: 'Min' },
+                    { type: 'max', name: 'Max', itemStyle: { color: 'green' } },
+                    { type: 'min', name: 'Min', itemStyle: { color: 'red' } },
                   ],
                 },
                 markLine: {
