@@ -76,8 +76,8 @@ static void http_get_task(void *pvParameters)
         } else {
             ESP_LOGI(TAG, "Pressure: %.2f Pa, Temperature: %.2f C", pressure, temperature);
 //            if (bme280p) {
-                ESP_LOGI(TAG,", Humidity: %.2f\n", humidity, pressure);
-		sprintf(body, BODY, temperature , humidity );
+                ESP_LOGI(TAG,", Humidity: %.2f\n", humidity);
+		sprintf(body, BODY, temperature , humidity, pressure );
                 sprintf(send_buf, REQUEST_POST, (int)strlen(body),body );
 //	    } else {
 //                sprintf(send_buf, REQUEST_POST, temperature , 0);
