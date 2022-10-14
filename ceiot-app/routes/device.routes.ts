@@ -8,7 +8,7 @@ const deviceRouter = Router();
 
 deviceRouter.get('/', async (request: Request, response: Response) => {
   try {
-    const devices = await Device.find().exec();
+    const devices = await Device.find().populate('last_measurement').exec();
     return response.status(200).json(devices);
   } catch (error) {
     return response.status(500).json(error);
@@ -72,7 +72,9 @@ deviceRouter.get('/:id', async (request: Request, response: Response) => {
       return response.status(404).json('Device Not Found');
     }
 
-    const device = await Device.findById(deviceId).exec();
+    const device = await Device.findById(deviceId)
+      .populate('last_measurement')
+      .exec();
 
     if (!device) {
       return response.status(404).json('Device Not Found');
@@ -180,12 +182,13 @@ deviceRouter.delete('/:id', async (request: Request, response: Response) => {
       return response.status(404).send('Device Not Found');
     }
 
-    const session = await Device.startSession();
     const device = await Device.findById(deviceId).exec();
 
     if (!device) {
       return response.status(404).send('Device Not Found');
     }
+
+    const session = await mongoose.startSession();
 
     await session.withTransaction(async () => {
       await Device.deleteOne({

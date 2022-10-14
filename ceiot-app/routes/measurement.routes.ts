@@ -60,7 +60,17 @@ measurementRouter.post('/', async (request: Request, response: Response) => {
       await Device.create(deviceModel);
     }
 
-    const measurement = await Measurement.create(newMeasurement);
+    const session = await mongoose.startSession();
+    let measurement;
+    await session.withTransaction(async () => {
+      measurement = await Measurement.create(newMeasurement);
+      await Device.updateOne(
+        { _id: newMeasurement?.device },
+        { $set: { last_measurement: measurement } }
+      ).exec();
+    });
+    session.endSession();
+
     return response.status(200).json(measurement);
   } catch (error) {
     const errorMessage = (error as Error).message;

@@ -63,7 +63,7 @@ export class DeviceMeasurementsComponent implements OnInit {
 
           measurements.forEach((measurement: Measurement) => {
             const dateFormatted = new Date(
-              measurement.time_sent
+              measurement.time_received
             ).toLocaleDateString('en-US', options);
             const dateParts = dateFormatted
               .substring(0, dateFormatted.indexOf(','))

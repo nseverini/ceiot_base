@@ -5,6 +5,5 @@ export interface Measurement {
   temperature: number;
   humidity: number;
   pressure: number;
-  time_sent: Date;
   time_received: Date;
 }

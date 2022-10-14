@@ -24,7 +24,14 @@ export class DeviceDetailComponent implements OnInit {
   private deviceId: string | null = null;
   device$!: Observable<Device>;
   dataSource = new MatTableDataSource<Device>([]);
-  displayedColumns: string[] = ['id', 'name', 'key'];
+  displayedColumns: string[] = [
+    'id',
+    'name',
+    'key',
+    'temperature',
+    'humidity',
+    'pressure',
+  ];
   isDataLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
   constructor(

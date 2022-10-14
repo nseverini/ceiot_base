@@ -113,6 +113,10 @@ export class DeviceFormComponent implements OnInit {
       const device = removeEmptyValues(this.deviceForm.value as Device);
       const operation = this.deviceId ? 'update' : 'create';
 
+      if (this.deviceId) {
+        device._id = this.deviceId;
+      }
+
       this.deviceService[operation](device)
         .pipe(
           finalize(() => this.isOperationLoading$.next(false)),

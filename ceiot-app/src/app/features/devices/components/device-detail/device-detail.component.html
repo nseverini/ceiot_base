@@ -18,26 +18,52 @@
           class="device-detail__table mat-elevation-z0"
           mat-table
           [dataSource]="dataSource"
-          matSort
         >
           <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+            <th mat-header-cell *matHeaderCellDef>Id</th>
             <td mat-cell *matCellDef="let element" data-label="id">
               {{ element._id }}
             </td>
           </ng-container>
 
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <th mat-header-cell *matHeaderCellDef>Name</th>
             <td mat-cell *matCellDef="let element" data-label="name">
               {{ element.name }}
             </td>
           </ng-container>
 
           <ng-container matColumnDef="key">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Key</th>
+            <th mat-header-cell *matHeaderCellDef>Key</th>
             <td mat-cell *matCellDef="let element" data-label="key">
               {{ element.key }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="temperature">
+            <th mat-header-cell *matHeaderCellDef>Temperature</th>
+            <td mat-cell *matCellDef="let element" data-label="temperature">
+              <ng-container *ngIf="element.last_measurement?.temperature">
+                {{ element.last_measurement?.temperature }} C°
+              </ng-container>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="humidity">
+            <th mat-header-cell *matHeaderCellDef>Humidity</th>
+            <td mat-cell *matCellDef="let element" data-label="humidity">
+              <ng-container *ngIf="element.last_measurement?.humidity">
+                {{ element.last_measurement?.humidity }} %
+              </ng-container>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="pressure">
+            <th mat-header-cell *matHeaderCellDef>Pressure</th>
+            <td mat-cell *matCellDef="let element" data-label="pressure">
+              <ng-container *ngIf="element.last_measurement?.pressure">
+                {{ element.last_measurement?.pressure }} Pa
+              </ng-container>
             </td>
           </ng-container>
 

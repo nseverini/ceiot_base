@@ -30,7 +30,15 @@ export class DeviceTableComponent implements OnInit {
   @Output() refreshDevicesEvent = new EventEmitter();
   @Output() openMeasurementsModalEvent = new EventEmitter<string>();
   @Output() copyDeviceIdEvent = new EventEmitter<string>();
-  displayedColumns: string[] = ['id', 'name', 'key', 'operations'];
+  displayedColumns: string[] = [
+    'id',
+    'name',
+    'key',
+    'temperature',
+    'humidity',
+    'pressure',
+    'operations',
+  ];
   dataSource = new MatTableDataSource<Device>([]);
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild('filterInput') filterInput!: ElementRef;

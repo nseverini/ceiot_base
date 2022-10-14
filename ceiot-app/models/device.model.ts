@@ -9,6 +9,10 @@ const DeviceSchema: Schema = new Schema(
       type: String,
       required: true,
     },
+    last_measurement: {
+      type: Schema.Types.ObjectId,
+      ref: 'Measurement',
+    },
   },
   {
     collection: 'devices',
