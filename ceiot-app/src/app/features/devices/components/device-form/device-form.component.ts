@@ -14,6 +14,7 @@ import {
 } from 'rxjs';
 import { Device } from '../../models/device';
 import { DeviceService } from '../../services/device.service';
+import { removeEmptyValues } from 'src/app/core/utils/remove-empty-values';
 
 @Component({
   selector: 'app-device-form',
@@ -109,7 +110,7 @@ export class DeviceFormComponent implements OnInit {
     this.errorMessage$.next('');
     if (this.deviceForm.valid) {
       this.isOperationLoading$.next(true);
-      const device = this.removeEmptyValues(this.deviceForm.value as Device);
+      const device = removeEmptyValues(this.deviceForm.value as Device);
       const operation = this.deviceId ? 'update' : 'create';
 
       this.deviceService[operation](device)
@@ -135,13 +136,5 @@ export class DeviceFormComponent implements OnInit {
           this.router.navigate(['/devices']);
         });
     }
-  }
-
-  private removeEmptyValues(device: Device): Device {
-    return Object.fromEntries(
-      Object.entries(device).filter(
-        ([_, v]) => v !== null && v !== '' && v !== undefined
-      )
-    ) as Device;
   }
 }

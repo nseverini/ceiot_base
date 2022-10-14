@@ -1,7 +1,4 @@
 import { Router, Request, Response } from 'express';
-import Device from 'models/device.model';
-import Measurement from 'models/measurement.model';
-import mongoose from 'mongoose';
 const fs = require('fs');
 import { render } from 'utils/render';
 
@@ -58,7 +55,6 @@ adminRouter.get('/:command', async (request: Request, response: Response) => {
 
     return response.send(render(template, { msg: msg }));
   } catch (error) {
-    console.log(error);
     return response.status(500).json(error);
   }
 });

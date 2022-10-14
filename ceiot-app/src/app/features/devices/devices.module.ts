@@ -21,9 +21,9 @@ import { DevicesComponent } from './components/devices/devices.component';
 import { DeviceTableComponent } from './components/device-table/device-table.component';
 import { DeviceFormComponent } from './components/device-form/device-form.component';
 import { DeviceMeasurementsComponent } from './components/device-measurements/device-measurements.component';
+import { DeviceDetailComponent } from './components/device-detail/device-detail.component';
 
 import { SharedModule } from 'src/app/shared/shared.module';
-import { DeviceDetailComponent } from './components/device-detail/device-detail.component';
 
 @NgModule({
   declarations: [

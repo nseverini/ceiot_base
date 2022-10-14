@@ -49,6 +49,8 @@ export class DeviceTableComponent implements OnInit {
   }
 
   refreshDevices(): void {
+    this.dataSource.data = [];
+    this.isDataLoading = true;
     this.filterInput.nativeElement.value = '';
     this.refreshDevicesEvent.emit();
   }

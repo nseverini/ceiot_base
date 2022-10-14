@@ -47,13 +47,14 @@
               {{ labelSubmit }}
             </ng-container>
             <ng-template #isOperationLoadingTemplate>
-              <mat-icon
-                ><mat-spinner
+              <mat-icon>
+                <mat-spinner
                   [diameter]="20"
                   mode="indeterminate"
                   strokeWidth="11%"
-                ></mat-spinner
-              ></mat-icon>
+                >
+                </mat-spinner>
+              </mat-icon>
             </ng-template>
           </button>
           <button mat-stroked-button type="submit" routerLink="/devices">

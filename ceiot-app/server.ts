@@ -3,7 +3,7 @@ import 'zone.js/dist/zone-node';
 import { APP_BASE_HREF } from '@angular/common';
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
-import { Router, Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import { existsSync } from 'fs';
 import { join } from 'path';
 
@@ -12,7 +12,6 @@ import { AppServerModule } from './src/main.server';
 import * as mongoose from 'mongoose';
 import { json, urlencoded } from 'body-parser';
 import * as compression from 'compression';
-import helmet from 'helmet';
 import * as dotenv from 'dotenv';
 const bodyParserErrorHandler = require('express-body-parser-error-handler');
 
@@ -24,6 +23,10 @@ import adminRoutes from './routes/admin.routes';
 export function app(): express.Express {
   dotenv.config();
   const server = express();
+  server.use(compression());
+  server.use(json());
+  server.use(urlencoded({ extended: true }));
+  server.use(bodyParserErrorHandler());
   const distFolder = join(process.cwd(), 'dist/ceiot-app/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html'))
     ? 'index.original.html'
@@ -34,21 +37,8 @@ export function app(): express.Express {
     'html',
     ngExpressEngine({
       bootstrap: AppServerModule,
-      inlineCriticalCss: false,
     })
   );
-
-  server.set('view engine', 'html');
-  server.set('views', distFolder);
-
-  server.use(compression());
-
-  server.use(json());
-  server.use(urlencoded({ extended: true }));
-
-  server.use(bodyParserErrorHandler());
-
-  server.use(helmet());
 
   const connectionString = process.env['MONGODB_URL'] as string;
   mongoose
@@ -59,6 +49,10 @@ export function app(): express.Express {
   server.use('/api/admin', adminRoutes);
   server.use('/api/devices', deviceRoutes);
   server.use('/api/measurements', measurementRoutes);
+
+  server.set('view engine', 'html');
+  server.set('views', distFolder);
+
   server.use('/api/*', (request: Request, response: Response) => {
     return response.sendStatus(404);
   });
