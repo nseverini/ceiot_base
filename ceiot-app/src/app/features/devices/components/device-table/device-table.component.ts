@@ -20,6 +20,7 @@ import { Device } from '../../models/device';
 })
 export class DeviceTableComponent implements OnInit {
   @Input() set devices(data: Device[] | null) {
+    this.dataSource.data = [];
     if (data) {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
@@ -57,8 +58,6 @@ export class DeviceTableComponent implements OnInit {
   }
 
   refreshDevices(): void {
-    this.dataSource.data = [];
-    this.isDataLoading = true;
     this.filterInput.nativeElement.value = '';
     this.refreshDevicesEvent.emit();
   }
