@@ -113,15 +113,6 @@ export class DeviceMeasurementsComponent implements OnInit {
                 tooltip: {
                   valueFormatter: (value) => `${value}°C`,
                 },
-                markPoint: {
-                  data: [
-                    { type: 'max', name: 'Max', itemStyle: { color: 'green' } },
-                    { type: 'min', name: 'Min', itemStyle: { color: 'red' } },
-                  ],
-                },
-                markLine: {
-                  data: [{ type: 'average', name: 'Avg' }],
-                },
               },
               {
                 name: 'Pressure',
@@ -131,15 +122,6 @@ export class DeviceMeasurementsComponent implements OnInit {
                 tooltip: {
                   valueFormatter: (value) => `${value} Pa`,
                 },
-                markPoint: {
-                  data: [
-                    { type: 'max', name: 'Max', itemStyle: { color: 'green' } },
-                    { type: 'min', name: 'Min', itemStyle: { color: 'red' } },
-                  ],
-                },
-                markLine: {
-                  data: [{ type: 'average', name: 'Avg' }],
-                },
               },
               {
                 name: 'Humidity',
@@ -148,15 +130,6 @@ export class DeviceMeasurementsComponent implements OnInit {
                 smooth: true,
                 tooltip: {
                   valueFormatter: (value) => `${value}%`,
-                },
-                markPoint: {
-                  data: [
-                    { type: 'max', name: 'Max', itemStyle: { color: 'green' } },
-                    { type: 'min', name: 'Min', itemStyle: { color: 'red' } },
-                  ],
-                },
-                markLine: {
-                  data: [{ type: 'average', name: 'Avg' }],
                 },
               },
             ],

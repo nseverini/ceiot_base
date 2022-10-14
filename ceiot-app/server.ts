@@ -13,6 +13,7 @@ import * as mongoose from 'mongoose';
 import { json, urlencoded } from 'body-parser';
 import * as compression from 'compression';
 import * as dotenv from 'dotenv';
+import * as cors from 'cors';
 const bodyParserErrorHandler = require('express-body-parser-error-handler');
 
 import deviceRoutes from './routes/device.routes';
@@ -23,6 +24,7 @@ import adminRoutes from './routes/admin.routes';
 export function app(): express.Express {
   dotenv.config();
   const server = express();
+  server.use(cors());
   server.use(compression());
   server.use(json());
   server.use(urlencoded({ extended: true }));
