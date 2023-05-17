@@ -4,7 +4,7 @@ Hacer una copia de este documento para utilizar com plantilla para el ejercicio 
 
 ## Alumno
 
-(completar)
+Nahuel Severini
 
 ## Enunciado
 
@@ -56,9 +56,13 @@ Objetivo del ataque: inhabilitar sin destruir el puerto enemigo con vistas a pos
 
 ## Datos trabajo práctico
 
-link
+[Planificación del trabajo](https://github.com/nseverini/plantilla-planificacion/blob/aerogrow/charter.pdf)
 
-Muy breve descripción
+[Memoria del trabajo (en proceso)](https://github.com/nseverini/Plantilla-memoria)
+
+Diagrama en bloques del sistema
+
+<img width="592" alt="Diagrama en bloques" src="https://github.com/nseverini/ceiot_base/assets/46693419/d4654fbf-29f5-459d-b7fa-046d13bfbf90">
 
 ## Resolución
 
