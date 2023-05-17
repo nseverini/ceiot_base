@@ -60,9 +60,23 @@ Objetivo del ataque: inhabilitar sin destruir el puerto enemigo con vistas a pos
 
 [Memoria del trabajo (en proceso)](https://github.com/nseverini/Plantilla-memoria)
 
+El propósito del trabajo es el diseño, desarrollo e implementación de un sistema que permita la gestión de cultivos aeropónicos, con el objetivo de incrementar su productividad y reducir la dificultad de mantenimiento.
+
 Diagrama en bloques del sistema
 
 <img width="592" alt="Diagrama en bloques" src="https://github.com/nseverini/ceiot_base/assets/46693419/d4654fbf-29f5-459d-b7fa-046d13bfbf90">
+
+Se utiliza un ESP32 como microcontrolador por cada zona de cultivo aeropónica que tiene una conexión MQTT con el broker Aedes para recibir datos provenientes de este y a su vez transmitir la información recibida de los sensores.
+
+El broker se encarga de autenticar y autorizar al microcontrolador. Una vez hecho esto, debe analizar la información recibida, validarla y en caso de ser necesario enviarla al DaaS de MongoDB para que sea almacenada. Además, el broker por medio del protocolo WebSocket puede envíar los datos en tiempo real a la aplicación PWA.
+
+La API REST gestiona el acceso a los datos almacenados en el DaaS, brindando permisos de lectura y escritura cuando sea necesario, por medio de sus endpoints. Estos últimos son consumidos por la aplicación PWA por medio de HTTPS.
+
+Por ultimo, la aplicación PWA permite al usuario interactuar con el sistema por medio de sus interfaces.
+
+A diferencia del microcontrolador que es único por zona de cultivo, el servidor y el DaaS es compartido entre todos los usuarios que posea el sistema.
+
+Es importante destacar que todas las conexiones realizadas entre los componentes del sistema utilizan TLS, para asegurar que las mismas sean seguras.
 
 ## Resolución
 
