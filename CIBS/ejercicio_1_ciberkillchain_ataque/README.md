@@ -81,7 +81,7 @@ Es importante destacar que todas las conexiones realizadas entre los componentes
 ## Resolución
 
 ### Objetivo del ataque
-Lograr que el usuario final no tenga confianza en el sistema para que comience a usar el software de la competencia, para lograrlo se implementará una estrategia que involucra la interceptación de las mediciones y el envío de datos inválidos.
+Lograr que el usuario final no tenga confianza en el sistema para que comience a usar el software de la competencia, para lograrlo se implementará una estrategia que involucra la intercepción de las mediciones y el envío de datos inválidos.
 
 ### Pasos del ataque
 
