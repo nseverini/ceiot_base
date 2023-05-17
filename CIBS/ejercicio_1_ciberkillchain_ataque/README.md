@@ -80,6 +80,30 @@ Es importante destacar que todas las conexiones realizadas entre los componentes
 
 ## Resolución
 
+### Objetivo del ataque
+Lograr que el usuario final no tenga confianza en el sistema para que comience a usar el software de la competencia, para lograrlo se implementará una estrategia que involucra la interceptación de las mediciones y el envío de datos inválidos.
+
+### Pasos del ataque
+
+### 1. Reconnaissance.
+Gather Victim Host Information [T1592](https://attack.mitre.org/techniques/T1592/)
+### 2. Weaponization.
+Develop Capabilities [T1587](https://attack.mitre.org/techniques/T1587/) y Acquire Infrastructure [T1583](https://attack.mitre.org/techniques/T1583/)
+### 3. Delivery.
+
+### 4. Exploit.
+
+### 5. Installation.
+
+### 6. Command & Control.
+
+### 7. Actions on Objectives.
+Data Manipulation [T1565](https://attack.mitre.org/techniques/T1565/)
+
+Diagrama en bloques del sistema aplicando CiberKillChain
+
+
+
 
   
 
