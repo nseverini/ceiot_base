@@ -10,50 +10,6 @@ Nahuel Severini
 
 Armar una cyberkillchain usando técnicas de la matriz de Att&ck para un escenario relacionado al trabajo práctico de la carrera.
 
-### Instrucciones
-
-Debe haber un objetivo para el ataque.
-
-El escenario debe ser con el sistema ya funcionando en el futuro.
-
-Debe ser en primera persona, es el punto de vista del atacante.
-
-Es recomendable hacer dos o tres pasadas, en la primera la idea, en las siguientes refinamientos especificando las técnicas.
-PURO ATAQUE, nada de andar pensando cómo corregir nada.
-
-Para cada etapa, si hay varias medidas posibles, ordenar dejando para lo último lo que se va a hacer en el siguiente paso.
-
-### Ejemplo adaptado a un juego de guerra inventado:
-
-Objetivo del ataque: inhabilitar sin destruir el puerto enemigo con vistas a posteriormente tomarlo.
-
-* Reconnaissance
-  - Imagen satelital identifica una pista de aterrizaje.
-  - Espías dicen que por el puerto entra el combustible.
-  - Espías locales dicen que la playa cercana no tiene buena vigilancia.
-
-* Weaponization
-  - Puedo preparar un bombardeo.
-  - Decido preparar un equipo de comandos de sabotage.
-  
-* Delivery
-  - Envío al equipo de sabotage a la playa cercana en submarino.
-  
-* Exploit
-  - El equipo logra desembarcar sin incidentes en la playa.
-  
-* Installation  
-  - El equipo se hace pasar por una compañia de circo como camuflaje.
-
-* Command & Control
-  - Podría utilizar palomas mensajeras.
-  - Decido utilizar Super High TeraHertz Radio que el adversario no puede detectar.
-  
-* Actions on Objectives
-  - El equipo de comandos provoca daños menores en las cañerías.
-  - El equipo de comandos coloca minas en el puerto dejando un camino para el desembarco.
-  
-
 ## Datos trabajo práctico
 
 [Planificación del trabajo](https://github.com/nseverini/plantilla-planificacion/blob/aerogrow/charter.pdf)
@@ -86,21 +42,38 @@ Lograr que el usuario final no tenga confianza en el sistema para que comience a
 ### Pasos del ataque
 
 ### 1. Reconnaissance.
-Gather Victim Host Information [T1592](https://attack.mitre.org/techniques/T1592/)
+Técnicas utilizadas: Gather Victim Host Information [T1592](https://attack.mitre.org/techniques/T1592/) y Gather Victim Org Information [T1591](https://attack.mitre.org/techniques/T1591/)
+- Se realizá un análisis de la documentación del sistema. 
+- Se descubre que la empresa utiliza un servicio de recolección de hardware sensible.
+- Se realizá un análisis del personal que trabaja en el servicio de recolección.
+
 ### 2. Weaponization.
-Develop Capabilities [T1587](https://attack.mitre.org/techniques/T1587/) y Acquire Infrastructure [T1583](https://attack.mitre.org/techniques/T1583/)
+Técnicas utilizadas: Develop Capabilities [T1587](https://attack.mitre.org/techniques/T1587/) y Acquire Infrastructure [T1583](https://attack.mitre.org/techniques/T1583/)
+- Se consiguen credenciales falsas para hacerme pasar por un recolector de hardware sensible.
+- Se diseña e implementa un software que sea capaz de interceptar los mensajes de los microcontroladores, para poder modificarlos y enviarlos al broker real. 
+- Se diseña e implementa una web que clone las páginas públicas del sistema y que sea capaz de guardar las credenciales ingresadas del usuario.
+
 ### 3. Delivery.
+Técnicas utilizadas: Phishing [T1566](https://attack.mitre.org/techniques/T1566/) y Account Discovery [T1087](https://attack.mitre.org/techniques/T1087/)
+- Se envían correos electrónicos maliciosos a los usuarios del sistema. Los correos electrónicos solicitarán el ingreso de sus credenciales en la web falsa creada previamente. 
+- Se utilizan las credenciales falsas para hacerse pasar por el empleado de recolección.
 
 ### 4. Exploit.
+Técnicas utilizadas: Obtain Capabilities [T1588](https://attack.mitre.org/techniques/T1588/) 
+- Se logra obtener el hardware de la empresa que contiene un backup con los certificados TLS.
+- Se logra obtener las credenciales de los usuarios para poder ingresar al sistema y obtener las credenciales de los microcontroladores.
 
 ### 5. Installation.
+Técnicas utilizadas:
+- Al poseer los certificados TLS y las credenciales de los microcontroladores, el software creado previamente logra interceptar los mensajes de los microcontroladores y los reenvia sin alterarlos al broker para poder evaluar el resultado.
 
 ### 6. Command & Control.
+Técnicas utilizadas: Proxy [T1090](https://attack.mitre.org/techniques/T1090/)
+- 
 
 ### 7. Actions on Objectives.
-Data Manipulation [T1565](https://attack.mitre.org/techniques/T1565/)
-
-Diagrama en bloques del sistema aplicando CiberKillChain
+Técnicas utilizadas: Data Manipulation [T1565](https://attack.mitre.org/techniques/T1565/)
+- Se interceptan los mensajes enviados por los microcontroladores de los usuarios, se ingresan datos erróneos y se reenvían al broker real.
 
 
 
