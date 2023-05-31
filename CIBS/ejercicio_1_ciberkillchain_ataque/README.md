@@ -67,23 +67,24 @@ Técnicas utilizadas: Obtain Capabilities [T1588](https://attack.mitre.org/techn
 Técnicas utilizadas: Remote Services [T1021](https://attack.mitre.org/techniques/T1021/)
 - Al tener las credenciales de los empleados, se lográ ingresar al servidor del sistema y se realizan las siguientes acciones:  
 a)  Se obtienen los certificados TLS utilizados en el sistema.
-b)  Se obtienen de la base de datos los correos electrónicos de los usuarios del sistema y se realizá el siguiente búcle de Delivery/Exploit/Installation:
+b)  Se obtienen de la base de datos los correos electrónicos de los usuarios del sistema.
+c)  Se realizá el siguiente búcle de Delivery/Exploit/Installation:
 
-#### C. Delivery.
+#### Delivery.
 Técnicas utilizadas: Phishing [T1566](https://attack.mitre.org/techniques/T1566/) y Account Discovery [T1087](https://attack.mitre.org/techniques/T1087/)
 - Se envían correos electrónicos maliciosos a los usuarios del sistema. Los correos electrónicos solicitarán el ingreso de sus credenciales en la web falsa creada previamente. 
 
-#### D. Exploit.
+#### Exploit.
 Técnicas utilizadas: Obtain Capabilities [T1588](https://attack.mitre.org/techniques/T1588/)
 - Se logra obtener las credenciales de los usuarios para poder ingresar al sistema y así conseguir las credenciales de los microcontroladores.
 
-#### E. Installation.
+#### Installation.
 Técnicas utilizadas:
-- Al tener los certificados TLS y las credenciales de los microcontroladores, el software creado previamente logra interceptar los mensajes de los microcontroladores y los reenvía sin alterarlos al broker para poder evaluar el resultado. 
+- Al tener los certificados TLS y las credenciales de los microcontroladores, el software creado previamente se instala y logra interceptar los mensajes de los microcontroladores y los reenvía sin alterarlos al broker para poder evaluar el resultado. 
 
 ### 6. Command & Control.
 Técnicas utilizadas: Proxy [T1090](https://attack.mitre.org/techniques/T1090/)
-- Se comprueba que el resultado de la instalación haya sido exitoso para dar inicio al ataque.
+- Se comprueba que el resultado de la instalación haya sido exitosa para dar inicio al ataque.
 
 ### 7. Actions on Objectives.
 Técnicas utilizadas: Data Manipulation [T1565](https://attack.mitre.org/techniques/T1565/)
@@ -122,7 +123,7 @@ Técnicas utilizadas:
 
 ### 6. Command & Control.
 Técnicas utilizadas: Proxy [T1090](https://attack.mitre.org/techniques/T1090/)
-- Se comprueba que el resultado de la instalación haya sido exitoso para dar inicio al ataque.
+- Se comprueba que el resultado de la instalación haya sido exitosa para dar inicio al ataque.
 
 ### 7. Actions on Objectives.
 Técnicas utilizadas: Data Manipulation [T1565](https://attack.mitre.org/techniques/T1565/)
