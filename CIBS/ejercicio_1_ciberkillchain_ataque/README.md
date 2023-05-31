@@ -119,7 +119,7 @@ Técnicas utilizadas: Obtain Capabilities [T1588](https://attack.mitre.org/techn
 
 ### 5. Installation.
 Técnicas utilizadas:
-- Al tener los certificados TLS y las credenciales de los microcontroladores, el software creado previamente logra interceptar los mensajes de los microcontroladores y los reenvía sin alterarlos al broker para poder evaluar el resultado.
+- Al tener los certificados TLS y las credenciales de los microcontroladores, el software creado previamente se instala y logra interceptar los mensajes de los microcontroladores y los reenvía sin alterarlos al broker para poder evaluar el resultado.
 
 ### 6. Command & Control.
 Técnicas utilizadas: Proxy [T1090](https://attack.mitre.org/techniques/T1090/)
