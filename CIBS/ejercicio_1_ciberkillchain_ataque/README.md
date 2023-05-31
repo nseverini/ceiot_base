@@ -1,7 +1,5 @@
 # Ejercicio CiberKillChain - Ataque
 
-Hacer una copia de este documento para utilizar com plantilla para el ejercicio quitando las instrucciones y el ejemplo.
-
 ## Alumno
 
 Nahuel Severini
