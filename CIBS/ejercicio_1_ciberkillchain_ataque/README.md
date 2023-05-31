@@ -51,7 +51,7 @@ Técnicas utilizadas: Gather Victim Host Information [T1592](https://attack.mitr
 ### 2. Weaponization.
 Técnicas utilizadas: Develop Capabilities [T1587](https://attack.mitre.org/techniques/T1587/) y Acquire Infrastructure [T1583](https://attack.mitre.org/techniques/T1583/)
 - Se consigue el listado de emails de los empleados de la empresa.
-- Se diseña e implementa un software que sea capaz de interceptar los mensajes de los microcontroladores, para poder modificarlos y enviarlos al broker real. 
+- Se diseña e implementa un software que sea capaz de interceptar los mensajes de los microcontroladores, para poder modificarlos y enviarlos al broker del sistema. 
 - Se diseña e implementa una web falsa clonada que sea capaz de guardar las credenciales ingresadas del usuario.
 - Se diseña un correo electrónico de phishing con link a la web creada.
 
@@ -88,7 +88,7 @@ Técnicas utilizadas: Proxy [T1090](https://attack.mitre.org/techniques/T1090/)
 
 ### 7. Actions on Objectives.
 Técnicas utilizadas: Data Manipulation [T1565](https://attack.mitre.org/techniques/T1565/)
-- Se interceptan los mensajes enviados por los microcontroladores de los usuarios, se ingresan datos erróneos y se reenvían al broker real.
+- Se interceptan los mensajes enviados por los microcontroladores de los usuarios, se ingresan datos erróneos y se reenvían al broker del sistema.
 
 ### Caso 2
 
@@ -103,7 +103,7 @@ Técnicas utilizadas: Gather Victim Host Information [T1592](https://attack.mitr
 ### 2. Weaponization.
 Técnicas utilizadas: Develop Capabilities [T1587](https://attack.mitre.org/techniques/T1587/) y Acquire Infrastructure [T1583](https://attack.mitre.org/techniques/T1583/)
 - Se consiguen credenciales falsas para hacerme pasar por un recolector de hardware sensible.
-- Se diseña e implementa un software que sea capaz de interceptar los mensajes de los microcontroladores, para poder modificarlos y enviarlos al broker real. 
+- Se diseña e implementa un software que sea capaz de interceptar los mensajes de los microcontroladores, para poder modificarlos y enviarlos al broker del sistema. 
 - Se diseña e implementa una web que clone las páginas públicas del sistema y que sea capaz de guardar las credenciales ingresadas del usuario.
 - Se diseña un correo electrónico de phishing con link a la web creada.
 
@@ -127,5 +127,5 @@ Técnicas utilizadas: Proxy [T1090](https://attack.mitre.org/techniques/T1090/)
 
 ### 7. Actions on Objectives.
 Técnicas utilizadas: Data Manipulation [T1565](https://attack.mitre.org/techniques/T1565/)
-- Se interceptan los mensajes enviados por los microcontroladores de los usuarios, se ingresan datos erróneos y se reenvían al broker real.
+- Se interceptan los mensajes enviados por los microcontroladores de los usuarios, se ingresan datos erróneos y se reenvían al broker del sistema.
 
