@@ -1,10 +1,8 @@
 # Ejercicio CiberKillChain - Defensa
 
-Hacer una copia de este documento para utilizar com plantilla para el ejercicio
-
 ## Alumno
 
-(completar)
+Nahuel Severini
 
 ## Enunciado
 
