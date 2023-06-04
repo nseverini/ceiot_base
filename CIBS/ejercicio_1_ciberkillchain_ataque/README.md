@@ -43,7 +43,7 @@ Lograr que el usuario final no tenga confianza en el sistema para que comience a
 
 ### 1. Reconnaissance.
 Técnicas utilizadas: Gather Victim Host Information [T1592](https://attack.mitre.org/techniques/T1592/) y Gather Victim Identity Information[T1589](https://attack.mitre.org/techniques/T1589/)
-- Se realiza un análisis de la documentación del sistema obtenida por un exempleado de la empresa. 
+- Se realiza un análisis de la documentación del sistema obtenida por un exempleado de la empresa. Además, se obtienen y analizan los procesos internos de la empresa y las notificaciones que los empleados y usuarios suelen recibir por email.
 - Se realiza un análisis de la información pública de la empresa para poder obtener el listado de emails de los empleados.
 
 ### 2. Weaponization.
@@ -51,22 +51,23 @@ Técnicas utilizadas: Develop Capabilities [T1587](https://attack.mitre.org/tech
 - Se consigue el listado de emails de los empleados de la empresa.
 - Se diseña e implementa un software que sea capaz de interceptar los mensajes de los microcontroladores, para poder modificarlos y enviarlos al broker del sistema. 
 - Se diseña e implementa una web falsa clonada que sea capaz de guardar las credenciales ingresadas del usuario.
-- Se diseña un correo electrónico de phishing con link a la web creada.
+- Se diseña un correo electrónico de phishing con link a la web creada. El email diseñado es una copia de uno interno de la empresa para no generar sospechas.
 
 ### 3. Delivery.
 Técnicas utilizadas: Phishing [T1566](https://attack.mitre.org/techniques/T1566/) y Account Discovery [T1087](https://attack.mitre.org/techniques/T1087/)
-- Se envían correos electrónicos maliciosos a los empleados de la empresa. Los correos electrónicos simularán una notificación importante que debe ser atendida y solicitará el ingreso de sus credenciales en la web falsa creada previamente. 
+- Se envían correos electrónicos maliciosos a los empleados de la empresa. Los correos electrónicos simularán una notificación importante que debe ser atendida y solicitará el ingreso de sus credenciales en la web falsa creada previamente. Para no generar sospechas se espera un momento oportuno para enviarlos, por ejemplo a fin de mes se envía un correo por un nuevo beneficio de la empresa o por la confirmación de datos para la liquidación del salario. 
 
 ### 4. Exploit.
-Técnicas utilizadas: Obtain Capabilities [T1588](https://attack.mitre.org/techniques/T1588/) 
-- Se logra obtener las credenciales de los empleados para poder ingresar a los servidores del sistema.
+Técnicas utilizadas: Valid Accounts [T1078](https://attack.mitre.org/techniques/T1078/)
+- Se logra obtener las credenciales de los empleados para poder ingresar a los servidores del sistema sin que se den cuenta que esto acaba de suceder.
 
 ### 5. Installation.
-Técnicas utilizadas: Remote Services [T1021](https://attack.mitre.org/techniques/T1021/)
-- Al tener las credenciales de los empleados, se lográ ingresar al servidor del sistema y se realizan las siguientes acciones:  
-a)  Se obtienen los certificados TLS utilizados en el sistema.
-b)  Se obtienen de la base de datos los correos electrónicos de los usuarios del sistema.
-c)  Se realizá el siguiente búcle de Delivery/Exploit/Installation:
+Técnicas utilizadas: Cloud Administration Command [T1651](https://attack.mitre.org/techniques/T1651/) y Remote Services [T1021](https://attack.mitre.org/techniques/T1021/)
+- Al tener las credenciales de los empleados, se lográ ingresar al servidor del sistema y se realizan las siguientes acciones:
+a)  Se obtiene el control administrativo del sistema.
+b)  Se obtienen los certificados TLS utilizados en el sistema.
+c)  Se obtienen de la base de datos los correos electrónicos de los usuarios del sistema.
+d)  Se realizá el siguiente búcle de Delivery/Exploit/Installation:
 
 #### Delivery.
 Técnicas utilizadas: Phishing [T1566](https://attack.mitre.org/techniques/T1566/) y Account Discovery [T1087](https://attack.mitre.org/techniques/T1087/)
@@ -77,11 +78,11 @@ Técnicas utilizadas: Obtain Capabilities [T1588](https://attack.mitre.org/techn
 - Se logra obtener las credenciales de los usuarios para poder ingresar al sistema y así conseguir las credenciales de los microcontroladores.
 
 #### Installation.
-Técnicas utilizadas:
+Técnicas utilizadas: Proxy [T1090](https://attack.mitre.org/techniques/T1090/)
+- Se utiliza un proxy para interceptar y redireccionar en la red los mensajes de los microcontroladores al software creado previamente. Es decir, que el proxy permitirá la intercepción de los mensajes reales y los redireccionará al sistema creado.
 - Al tener los certificados TLS y las credenciales de los microcontroladores, el software creado previamente se instala y logra interceptar los mensajes de los microcontroladores y los reenvía sin alterarlos al broker para poder evaluar el resultado. 
 
 ### 6. Command & Control.
-Técnicas utilizadas: Proxy [T1090](https://attack.mitre.org/techniques/T1090/)
 - Se comprueba que el resultado de la instalación haya sido exitosa para dar inicio al ataque.
 
 ### 7. Actions on Objectives.
@@ -94,7 +95,7 @@ Técnicas utilizadas: Data Manipulation [T1565](https://attack.mitre.org/techniq
 
 ### 1. Reconnaissance.
 Técnicas utilizadas: Gather Victim Host Information [T1592](https://attack.mitre.org/techniques/T1592/) y Gather Victim Org Information [T1591](https://attack.mitre.org/techniques/T1591/)
-- Se realiza un análisis de la documentación del sistema obtenida por un exempleado de la empresa. 
+- Se realiza un análisis de la documentación del sistema obtenida por un exempleado de la empresa. Además, se obtienen y analizan los procesos internos de la empresa, las notificaciones que los empleados y usuarios suelen recibir por email y el listado de emails de usuarios del sistema.
 - Se descubre que la empresa utiliza un servicio de recolección de hardware sensible.
 - Se realiza un análisis del personal que trabaja en el servicio de recolección.
 
@@ -103,11 +104,11 @@ Técnicas utilizadas: Develop Capabilities [T1587](https://attack.mitre.org/tech
 - Se consiguen credenciales falsas para hacerme pasar por un recolector de hardware sensible.
 - Se diseña e implementa un software que sea capaz de interceptar los mensajes de los microcontroladores, para poder modificarlos y enviarlos al broker del sistema. 
 - Se diseña e implementa una web que clone las páginas públicas del sistema y que sea capaz de guardar las credenciales ingresadas del usuario.
-- Se diseña un correo electrónico de phishing con link a la web creada.
+- Se diseña un correo electrónico de phishing con link a la web creada. El email diseñado es una copia de uno de los que envía el sistema real para no generar sospechas.
 
 ### 3. Delivery.
 Técnicas utilizadas: Phishing [T1566](https://attack.mitre.org/techniques/T1566/) y Account Discovery [T1087](https://attack.mitre.org/techniques/T1087/)
-- Se envían correos electrónicos maliciosos a los usuarios del sistema. Los correos electrónicos solicitarán el ingreso de sus credenciales en la web falsa creada previamente. 
+- Se envían correos electrónicos maliciosos a los usuarios del sistema. Los correos electrónicos solicitarán el ingreso de sus credenciales en la web falsa creada previamente. Para no generar sospechas se espera un momento oportuno para enviarlos, por ejemplo a fin de mes se envía un correo por una nueva funcionalidad del sistema o por la confirmación de datos de la cuenta. 
 - Se utilizan las credenciales falsas para hacerse pasar por el empleado de recolección.
 
 ### 4. Exploit.
@@ -116,11 +117,11 @@ Técnicas utilizadas: Obtain Capabilities [T1588](https://attack.mitre.org/techn
 - Se logra obtener las credenciales de los usuarios para poder ingresar al sistema y obtener las credenciales de los microcontroladores.
 
 ### 5. Installation.
-Técnicas utilizadas:
+Técnicas utilizadas: Proxy [T1090](https://attack.mitre.org/techniques/T1090/)
+- Se utiliza un proxy para interceptar y redireccionar en la red los mensajes de los microcontroladores al software creado previamente. Es decir, que el proxy permitirá la intercepción de los mensajes reales y los redireccionará al sistema creado.
 - Al tener los certificados TLS y las credenciales de los microcontroladores, el software creado previamente se instala y logra interceptar los mensajes de los microcontroladores y los reenvía sin alterarlos al broker para poder evaluar el resultado.
 
 ### 6. Command & Control.
-Técnicas utilizadas: Proxy [T1090](https://attack.mitre.org/techniques/T1090/)
 - Se comprueba que el resultado de la instalación haya sido exitosa para dar inicio al ataque.
 
 ### 7. Actions on Objectives.
