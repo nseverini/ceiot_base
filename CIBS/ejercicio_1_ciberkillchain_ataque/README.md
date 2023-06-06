@@ -71,7 +71,7 @@ d)  Se realizá el siguiente búcle de Delivery/Exploit/Installation:
 
 #### Delivery.
 Técnicas utilizadas: Phishing [T1566](https://attack.mitre.org/techniques/T1566/) y Account Discovery [T1087](https://attack.mitre.org/techniques/T1087/)
-- Se envían correos electrónicos maliciosos a los usuarios del sistema. Los correos electrónicos solicitarán el ingreso de sus credenciales en la web falsa creada previamente. 
+- Se envían correos electrónicos maliciosos a los usuarios del sistema. Los correos electrónicos solicitarán el ingreso de sus credenciales en la web falsa creada previamente. Para no generar sospechas se espera un momento oportuno para enviarlos, por ejemplo a fin de mes se envía un correo por una nueva funcionalidad del sistema o por la confirmación de datos de la cuenta.
 
 #### Exploit.
 Técnicas utilizadas: Obtain Capabilities [T1588](https://attack.mitre.org/techniques/T1588/)
@@ -79,7 +79,7 @@ Técnicas utilizadas: Obtain Capabilities [T1588](https://attack.mitre.org/techn
 
 #### Installation.
 Técnicas utilizadas: Proxy [T1090](https://attack.mitre.org/techniques/T1090/)
-- Se utiliza un proxy para interceptar y redireccionar en la red los mensajes de los microcontroladores al software creado previamente. Es decir, que el proxy permitirá la intercepción de los mensajes reales y los redireccionará al sistema creado.
+- Se instala y utiliza un proxy, por ejemplo por medio de nginx, para interceptar y redireccionar en la red los mensajes de los microcontroladores al software creado previamente. Es decir, que el proxy permitirá la intercepción de los mensajes reales y los redireccionará al sistema creado.
 - Al tener los certificados TLS y las credenciales de los microcontroladores, el software creado previamente se instala y logra interceptar los mensajes de los microcontroladores y los reenvía sin alterarlos al broker para poder evaluar el resultado. 
 
 ### 6. Command & Control.
@@ -118,7 +118,7 @@ Técnicas utilizadas: Obtain Capabilities [T1588](https://attack.mitre.org/techn
 
 ### 5. Installation.
 Técnicas utilizadas: Proxy [T1090](https://attack.mitre.org/techniques/T1090/)
-- Se utiliza un proxy para interceptar y redireccionar en la red los mensajes de los microcontroladores al software creado previamente. Es decir, que el proxy permitirá la intercepción de los mensajes reales y los redireccionará al sistema creado.
+- Se instala y utiliza un proxy, por ejemplo por medio de nginx, para interceptar y redireccionar en la red los mensajes de los microcontroladores al software creado previamente. Es decir, que el proxy permitirá la intercepción de los mensajes reales y los redireccionará al sistema creado.
 - Al tener los certificados TLS y las credenciales de los microcontroladores, el software creado previamente se instala y logra interceptar los mensajes de los microcontroladores y los reenvía sin alterarlos al broker para poder evaluar el resultado.
 
 ### 6. Command & Control.
