@@ -45,7 +45,7 @@ Se instaura una política de uso obligatorio de multi-factor authentication para
 Se solicita el reinicio de contraseña para todas las cuentas del sistema.
 
 ### 4. Exploit.
-Password Policies [M1027](https://attack.mitre.org/mitigations/M1027/) y Account Use Policies [M1036](https://attack.mitre.org/mitigations/M1036/)
+Técnicas utilizadas: Password Policies [M1027](https://attack.mitre.org/mitigations/M1027/) y Account Use Policies [M1036](https://attack.mitre.org/mitigations/M1036/)
 
 Se instaura una política de reinicio de contraseña cada un periodo corto de tiempo para los emails y cuentas corporativas. 
 
