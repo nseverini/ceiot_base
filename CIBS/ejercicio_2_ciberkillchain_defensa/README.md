@@ -42,6 +42,7 @@ Técnicas utilizadas: Phishing [T1566](https://attack.mitre.org/techniques/T1566
 
 ### 3. Delivery.
 Técnicas utilizadas: User Training [M1017](https://attack.mitre.org/mitigations/M1017/) y Software Configuration [M1054](https://attack.mitre.org/mitigations/M1054/)
+
 Para evitar que los empleados de la empresa vuelvan a caer bajo correos maliciosos se deciden realizar las siguientes acciones:
 - Realizar un curso con un experto en ciberseguridad que enseñe a los empleados a identificar este tipo de correos.
 - Configurar los emails corporativos para que comprueben la validez del dominio del remitente y la integridad de los mensajes para realizar un filtrado en caso de ser necesario. 
@@ -52,6 +53,7 @@ Técnicas utilizadas: Pre-compromise [M1056](https://attack.mitre.org/mitigation
 
 ### 1. Reconnaissance.
 Técnicas utilizadas: Internet Scan [DS0035](https://attack.mitre.org/datasources/DS0035/)
+
 Para evitar futuros ataques se decide:
 - Realizar un analisis de la información pública de la empresa.
 - Eliminar toda la información pública que pueda ser utilizada dañinamente. Toda información encontrada que se pu
