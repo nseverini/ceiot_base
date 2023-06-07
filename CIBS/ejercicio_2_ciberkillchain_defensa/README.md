@@ -28,7 +28,7 @@ Se llega a la conclusión que tanto el broker como el microcontrolador y sensore
 A partir de este punto no quedan dudas, el sistema esta siendo victima de un ataque externo por una vulnerabilidad desconocida.
 
 ### 6. Command & Control. y 5. Installation.
-Técnicas utilizadas: Network Traffic [DS0029](https://attack.mitre.org/datasources/DS0029/), User Training [M1017](https://attack.mitre.org/mitigations/M1017/), Password Policies [M1054](https://attack.mitre.org/mitigations/M1027/) y Privileged Account Management [M1054](https://attack.mitre.org/mitigations/M1026/)
+Técnicas utilizadas: Network Traffic [DS0029](https://attack.mitre.org/datasources/DS0029/), Filter Network Traffic [M1037](https://attack.mitre.org/mitigations/M1037/), User Training [M1017](https://attack.mitre.org/mitigations/M1017/), Password Policies [M1027](https://attack.mitre.org/mitigations/M1027/), Privileged Account Management [M1054](https://attack.mitre.org/mitigations/M1026/) y Account Use Policies [M1036](https://attack.mitre.org/mitigations/M1036/)
 
 Se realiza un análisis de trafico en la red, el cual permite identificar el redireccionamiento de los mensajes hacia otro sistema. Luego se restauran las conexiones reales de los dispositivos hacia el broker removiendo la configuración utilizada en nginx.
 
@@ -38,14 +38,18 @@ Se decide limitar el numero y los privilegios de las cuentas con acceso a los se
 
 Para evitar que los usuarios del sistema vuelvan a caer bajo correos maliciosos se realiza una campaña preventiva de phishing por correo, por medio de la cual se enseña a identificar este tipo de correos.
 
-Por motivos de seguridad se instaura una política de reinicio de contraseña cada un periodo corto de tiempo para las cuentas utilizadas en el sistema.
+Se instaura una política de reinicio de contraseña cada un periodo corto de tiempo para las cuentas utilizadas en el sistema.
+
+Se instaura una política de uso obligatorio de multi-factor authentication para ingresar al sistema.
 
 Se solicita el reinicio de contraseña para todas las cuentas del sistema.
 
 ### 4. Exploit.
-Password Policies [M1054](https://attack.mitre.org/mitigations/M1027/)
+Password Policies [M1027](https://attack.mitre.org/mitigations/M1027/) y Account Use Policies [M1036](https://attack.mitre.org/mitigations/M1036/)
 
-Por motivos de seguridad se instaura una política de reinicio de contraseña cada un periodo corto de tiempo para los emails y cuentas corporativas.
+Se instaura una política de reinicio de contraseña cada un periodo corto de tiempo para los emails y cuentas corporativas. 
+
+Se instaura una política de uso obligatorio de multi-factor authentication para todos los emails y cuentas corporativas.
 
 Se solicita el reinicio de contraseña para todas las cuentas y servicios corporativos.
 
