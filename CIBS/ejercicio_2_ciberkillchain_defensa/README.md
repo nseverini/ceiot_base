@@ -30,9 +30,9 @@ A partir de este punto no quedan dudas, el sistema esta siendo victima de un ata
 ### 6. Command & Control. y 5. Installation.
 Técnicas utilizadas: Network Traffic [DS0029](https://attack.mitre.org/datasources/DS0029/), User Training [M1017](https://attack.mitre.org/mitigations/M1017/), Password Policies [M1054](https://attack.mitre.org/mitigations/M1027/) y Privileged Account Management [M1054](https://attack.mitre.org/mitigations/M1026/)
 
-Se realiza un análisis de trafico en la red, el cual permite identificar el redireccionamiento de los mensajes hacia otro sistema. Una vez identificado el redireccionamiento, se logra restaurar las conexiones reales de los dispositivos hacia el broker removiendo la configuración utilizada en nginx.
+Se realiza un análisis de trafico en la red, el cual permite identificar el redireccionamiento de los mensajes hacia otro sistema. Luego se restauran las conexiones reales de los dispositivos hacia el broker removiendo la configuración utilizada en nginx.
 
-Al verse comprometida la comunicación entre los dispositivos y el broker, se decide renovar todos los certificados utilizados en el sistema: para el caso de los dispositivos se utilizara OTA.
+Al verse comprometida la comunicación entre los dispositivos y el broker, se decide renovar todos los certificados utilizados en el sistema: para el caso de los dispositivos se utiliza OTA.
 
 Se decide limitar el numero y los privilegios de las cuentas con acceso a los servidores de la empresa.
 
