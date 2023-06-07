@@ -66,3 +66,6 @@ Técnicas utilizadas: Internet Scan [DS0035](https://attack.mitre.org/datasource
 Para evitar futuros ataques se realizan las siguientes acciones:
 - Realizar un análisis de la información pública de la empresa.
 - Eliminar toda la información pública que pueda ser utilizada dañinamente.
+
+### Observación general
+Es importante destacar que para ciertas técnicas no existen medidas que las mitiguen completamente, sino que se busca minimizar el daño o reducir la posibilidad de que exista. Algunos ejemplos de esto son: Gather Victim Host Information, Gather Victim Org Information, Develop Capabilities y Acquire Infrastructure
