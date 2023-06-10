@@ -12,7 +12,7 @@ Armar una cyberkillchain usando técnicas de la matriz de Att&ck para un escenar
 
 [Planificación del trabajo](https://github.com/nseverini/plantilla-planificacion/blob/aerogrow/charter.pdf)
 
-[Memoria del trabajo (en proceso)](https://github.com/nseverini/Plantilla-memoria)
+[Memoria del trabajo](https://github.com/nseverini/Plantilla-memoria/blob/aerogrow/memoria.pdf)
 
 El propósito del trabajo es el diseño, desarrollo e implementación de un sistema que permita la gestión de cultivos aeropónicos, con el objetivo de incrementar su productividad y reducir la dificultad de mantenimiento.
 
@@ -42,7 +42,7 @@ Lograr que el usuario final no tenga confianza en el sistema para que comience a
 ### Pasos del ataque
 
 ### 1. Reconnaissance.
-Técnicas utilizadas: Gather Victim Host Information [T1592](https://attack.mitre.org/techniques/T1592/) y Gather Victim Identity Information[T1589](https://attack.mitre.org/techniques/T1589/)
+Técnicas utilizadas: Gather Victim Host Information [T1592](https://attack.mitre.org/techniques/T1592/) y Gather Victim Identity Information [T1589](https://attack.mitre.org/techniques/T1589/)
 - Se realiza un análisis de la documentación del sistema obtenida por un exempleado de la empresa. Además, se obtienen y analizan los procesos internos de la empresa y las notificaciones que los empleados y usuarios suelen recibir por email.
 - Se realiza un análisis de la información pública de la empresa para poder obtener el listado de emails de los empleados.
 
