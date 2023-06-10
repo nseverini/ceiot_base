@@ -68,4 +68,4 @@ Para evitar futuros ataques se realizan las siguientes acciones:
 - Eliminar toda la información pública que pueda ser utilizada dañinamente.
 
 ### Observación general
-Es importante destacar que para ciertas técnicas no existen medidas que las mitiguen completamente, sino que se busca minimizar el daño o reducir la posibilidad de que exista. Algunos ejemplos de esto son: Gather Victim Host Information, Gather Victim Org Information, Develop Capabilities y Acquire Infrastructure
+Es importante destacar que para ciertas técnicas no existen medidas que las mitiguen completamente, sino que se busca minimizar el daño o reducir la posibilidad de que exista. Algunos ejemplos de esto son: Gather Victim Host Information, Gather Victim Org Information, Develop Capabilities y Acquire Infrastructure.
