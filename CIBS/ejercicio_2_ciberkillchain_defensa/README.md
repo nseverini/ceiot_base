@@ -27,11 +27,13 @@ Se llega a la conclusión que tanto el broker como el microcontrolador y sensore
 
 A partir de este punto no quedan dudas, el sistema esta siendo victima de un ataque externo por una vulnerabilidad desconocida.
 
-### 6. Command & Control. y 5. Installation.
-Técnicas utilizadas: Network Traffic [DS0029](https://attack.mitre.org/datasources/DS0029/), Filter Network Traffic [M1037](https://attack.mitre.org/mitigations/M1037/), User Training [M1017](https://attack.mitre.org/mitigations/M1017/), Password Policies [M1027](https://attack.mitre.org/mitigations/M1027/), Privileged Account Management [M1054](https://attack.mitre.org/mitigations/M1026/) y Account Use Policies [M1036](https://attack.mitre.org/mitigations/M1036/)
+### 6. Command & Control.
+Técnicas utilizadas: Network Traffic [DS0029](https://attack.mitre.org/datasources/DS0029/) y Filter Network Traffic [M1037](https://attack.mitre.org/mitigations/M1037/)
 
 Se realiza un análisis de trafico en la red, el cual permite identificar el redireccionamiento de los mensajes hacia otro sistema. Luego se restauran las conexiones reales de los dispositivos hacia el broker removiendo la configuración utilizada en nginx.
 
+### 5. Installation.
+Técnicas utilizadas: User Training [M1017](https://attack.mitre.org/mitigations/M1017/), Password Policies [M1027](https://attack.mitre.org/mitigations/M1027/), Privileged Account Management [M1054](https://attack.mitre.org/mitigations/M1026/) y Account Use Policies [M1036](https://attack.mitre.org/mitigations/M1036/)
 Al verse comprometida la comunicación entre los dispositivos y el broker, se decide renovar todos los certificados utilizados en el sistema: para el caso de los dispositivos se utiliza OTA.
 
 Se decide limitar el numero y los privilegios de las cuentas con acceso a los servidores de la empresa.
@@ -60,7 +62,10 @@ Para evitar que los empleados de la empresa vuelvan a caer bajo correos malicios
 - Realizar un curso con un experto en ciberseguridad que enseñe a los empleados a identificar este tipo de correos.
 - Configurar los emails corporativos para que comprueben la validez del dominio del remitente y la integridad de los mensajes para realizar un filtrado en caso de ser necesario. 
 
-### 1. Reconnaissance. y 2. Weaponization.
+### 2. Weaponization.
+Se considera que no se puede impedir el aprovisionamiento de los recursos.
+
+### 1. Reconnaissance. 
 Técnicas utilizadas: Internet Scan [DS0035](https://attack.mitre.org/datasources/DS0035/)
 
 Para evitar futuros ataques se realizan las siguientes acciones:
