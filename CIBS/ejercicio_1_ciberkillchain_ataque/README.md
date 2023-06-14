@@ -63,15 +63,18 @@ Técnicas utilizadas: Valid Accounts [T1078](https://attack.mitre.org/techniques
 
 ### 5. Installation.
 Técnicas utilizadas: Cloud Administration Command [T1651](https://attack.mitre.org/techniques/T1651/) y Remote Services [T1021](https://attack.mitre.org/techniques/T1021/)
-- Al tener las credenciales de los empleados, se lográ ingresar al servidor del sistema y se realizan las siguientes acciones:
-a)  Se obtiene el control administrativo del sistema.
-b)  Se obtienen los certificados TLS utilizados en el sistema.
-c)  Se obtienen de la base de datos los correos electrónicos de los usuarios del sistema.
-d)  Se realizá el siguiente búcle de Delivery/Exploit/Installation (el objetivo de este búcle es poder obtener las credenciales de los microcontroladores de los usuarios por medio del sistema utilizando los recursos obtenidos hasta el momento):
+
+Al tener las credenciales de los empleados, se lográ ingresar al servidor del sistema y se realizan las siguientes acciones:
+- Se obtiene el control administrativo del sistema.
+- Se obtienen los certificados TLS utilizados en el sistema.
+- Se obtienen de la base de datos los correos electrónicos de los usuarios del sistema.
+- Se realizá el siguiente búcle de Delivery/Exploit/Installation (el objetivo de este búcle es poder obtener las credenciales de los microcontroladores de los usuarios por medio del sistema utilizando los recursos obtenidos hasta el momento):
 
 #### Delivery.
 Técnicas utilizadas: Phishing [T1566](https://attack.mitre.org/techniques/T1566/) y Account Discovery [T1087](https://attack.mitre.org/techniques/T1087/)
-- Se envían correos electrónicos maliciosos a los usuarios del sistema. Los correos electrónicos solicitarán el ingreso de sus credenciales en la web falsa creada previamente. Para no generar sospechas se espera un momento oportuno para enviarlos, por ejemplo a fin de mes se envía un correo por una nueva funcionalidad del sistema o por la confirmación de datos de la cuenta (el delivery es muy parecido al que se encuentra fuera del búcle, sin embargo es importante destacar que los objetivos del phishing son completamente distintos: en el primer caso se trata de los empleados de la empresa, mientras que en este caso se trata de los usuarios del sistema).
+- Se envían correos electrónicos maliciosos a los usuarios del sistema. Los correos electrónicos solicitarán el ingreso de sus credenciales en la web falsa creada previamente. Para no generar sospechas se espera un momento oportuno para enviarlos, por ejemplo a fin de mes se envía un correo por una nueva funcionalidad del sistema o por la confirmación de datos de la cuenta.
+
+El delivery es muy parecido al que se encuentra fuera del búcle, sin embargo es importante destacar que los objetivos del phishing son completamente distintos: en el primer caso se trata de los empleados de la empresa, mientras que en este caso se trata de los usuarios del sistema.
 
 #### Exploit.
 Técnicas utilizadas: Obtain Capabilities [T1588](https://attack.mitre.org/techniques/T1588/)
