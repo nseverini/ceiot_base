@@ -85,7 +85,20 @@ Técnicas utilizadas: Obtain Capabilities [T1588](https://attack.mitre.org/techn
 #### Installation.
 Técnicas utilizadas: Proxy [T1090](https://attack.mitre.org/techniques/T1090/)
 - Se instala y utiliza un proxy, por ejemplo por medio de nginx, para interceptar y redireccionar en la red los mensajes de los microcontroladores al software creado previamente. Es decir, que el proxy permitirá la intercepción de los mensajes reales y los redireccionará al sistema creado.
-- Al tener los certificados TLS y las credenciales de los microcontroladores, el software creado previamente se instala y logra interceptar los mensajes de los microcontroladores y los reenvía sin alterarlos al broker para poder evaluar el resultado. 
+- Al tener los certificados TLS y las credenciales de los microcontroladores, el software creado previamente se instala y logra interceptar los mensajes de los microcontroladores y los reenvía sin alterarlos al broker para poder evaluar el resultado.
+
+A modo de ejemplo se presenta el código de una configuración de nginx para redireccionar mensajes:
+
+```
+stream {
+  server {
+      listen 8883;
+      proxy_pass 192.168.1.55:8883;
+  }
+}
+```
+
+Para más información respecto al tema dirigirse al siguiente [link](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/).
 
 ### 6. Command & Control.
 - Se comprueba que el resultado de la instalación haya sido exitosa para dar inicio al ataque.
@@ -127,6 +140,19 @@ Técnicas utilizadas: Obtain Capabilities [T1588](https://attack.mitre.org/techn
 Técnicas utilizadas: Proxy [T1090](https://attack.mitre.org/techniques/T1090/)
 - Se instala y utiliza un proxy, por ejemplo por medio de nginx, para interceptar y redireccionar en la red los mensajes de los microcontroladores al software creado previamente. Es decir, que el proxy permitirá la intercepción de los mensajes reales y los redireccionará al sistema creado.
 - Al tener los certificados TLS y las credenciales de los microcontroladores, el software creado previamente se instala y logra interceptar los mensajes de los microcontroladores y los reenvía sin alterarlos al broker para poder evaluar el resultado.
+
+A modo de ejemplo se presenta el código de una configuración de nginx para redireccionar mensajes:
+
+```
+stream {
+  server {
+      listen 8883;
+      proxy_pass 192.168.1.55:8883;
+  }
+}
+```
+
+Para más información respecto al tema dirigirse al siguiente [link](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/).
 
 ### 6. Command & Control.
 - Se comprueba que el resultado de la instalación haya sido exitosa para dar inicio al ataque.
