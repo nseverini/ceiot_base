@@ -49,7 +49,7 @@ Técnicas utilizadas: Gather Victim Host Information [T1592](https://attack.mitr
 ### 2. Weaponization.
 Técnicas utilizadas: Develop Capabilities [T1587](https://attack.mitre.org/techniques/T1587/) y Acquire Infrastructure [T1583](https://attack.mitre.org/techniques/T1583/)
 - Se consigue el listado de emails de los empleados de la empresa.
-- Se diseña e implementa un software que sea capaz de interceptar los mensajes de los microcontroladores, para poder modificarlos y enviarlos al broker del sistema. 
+- Se diseña e implementa un software que sea capaz de recibir los mensajes de los microcontroladores (los cuales serán redireccionados por un proxy), para poder modificarlos y enviarlos al broker del sistema. 
 - Se diseña e implementa una web falsa clonada que sea capaz de guardar las credenciales ingresadas del usuario.
 - Se diseña un correo electrónico de phishing con link a la web creada. El email diseñado es una copia de uno interno de la empresa para no generar sospechas.
 
@@ -67,15 +67,17 @@ Técnicas utilizadas: Cloud Administration Command [T1651](https://attack.mitre.
 a)  Se obtiene el control administrativo del sistema.
 b)  Se obtienen los certificados TLS utilizados en el sistema.
 c)  Se obtienen de la base de datos los correos electrónicos de los usuarios del sistema.
-d)  Se realizá el siguiente búcle de Delivery/Exploit/Installation:
+d)  Se realizá el siguiente búcle de Delivery/Exploit/Installation (el objetivo de este búcle es poder obtener las credenciales de los microcontroladores de los usuarios por medio del sistema utilizando los recursos obtenidos hasta el momento):
 
 #### Delivery.
 Técnicas utilizadas: Phishing [T1566](https://attack.mitre.org/techniques/T1566/) y Account Discovery [T1087](https://attack.mitre.org/techniques/T1087/)
-- Se envían correos electrónicos maliciosos a los usuarios del sistema. Los correos electrónicos solicitarán el ingreso de sus credenciales en la web falsa creada previamente. Para no generar sospechas se espera un momento oportuno para enviarlos, por ejemplo a fin de mes se envía un correo por una nueva funcionalidad del sistema o por la confirmación de datos de la cuenta.
+- Se envían correos electrónicos maliciosos a los usuarios del sistema. Los correos electrónicos solicitarán el ingreso de sus credenciales en la web falsa creada previamente. Para no generar sospechas se espera un momento oportuno para enviarlos, por ejemplo a fin de mes se envía un correo por una nueva funcionalidad del sistema o por la confirmación de datos de la cuenta (el delivery es muy parecido al que se encuentra fuera del búcle, sin embargo es importante destacar que los objetivos del phishing son completamente distintos: en el primer caso se trata de los empleados de la empresa, mientras que en este caso se trata de los usuarios del sistema).
 
 #### Exploit.
 Técnicas utilizadas: Obtain Capabilities [T1588](https://attack.mitre.org/techniques/T1588/)
-- Se logra obtener las credenciales de los usuarios para poder ingresar al sistema y así conseguir las credenciales de los microcontroladores.
+- Se logra obtener las credenciales de los usuarios para poder ingresar al sistema web y así conseguir las credenciales de los microcontroladores. Se adjunta a continuación una imagen del sistema.
+
+<img width="1690" alt="image" src="https://github.com/nseverini/ceiot_base/assets/46693419/fa2d9aea-732f-48b2-91f8-955b683430c8">
 
 #### Installation.
 Técnicas utilizadas: Proxy [T1090](https://attack.mitre.org/techniques/T1090/)
@@ -102,7 +104,7 @@ Técnicas utilizadas: Gather Victim Host Information [T1592](https://attack.mitr
 ### 2. Weaponization.
 Técnicas utilizadas: Develop Capabilities [T1587](https://attack.mitre.org/techniques/T1587/) y Acquire Infrastructure [T1583](https://attack.mitre.org/techniques/T1583/)
 - Se consiguen credenciales falsas para hacerme pasar por un recolector de hardware sensible.
-- Se diseña e implementa un software que sea capaz de interceptar los mensajes de los microcontroladores, para poder modificarlos y enviarlos al broker del sistema. 
+- Se diseña e implementa un software que sea capaz de recibir los mensajes de los microcontroladores (los cuales serán redireccionados por un proxy), para poder modificarlos y enviarlos al broker del sistema. 
 - Se diseña e implementa una web que clone las páginas públicas del sistema y que sea capaz de guardar las credenciales ingresadas del usuario.
 - Se diseña un correo electrónico de phishing con link a la web creada. El email diseñado es una copia de uno de los que envía el sistema real para no generar sospechas.
 
@@ -114,7 +116,9 @@ Técnicas utilizadas: Phishing [T1566](https://attack.mitre.org/techniques/T1566
 ### 4. Exploit.
 Técnicas utilizadas: Obtain Capabilities [T1588](https://attack.mitre.org/techniques/T1588/) 
 - Se logra obtener el hardware de la empresa que contiene un backup con los certificados TLS.
-- Se logra obtener las credenciales de los usuarios para poder ingresar al sistema y obtener las credenciales de los microcontroladores.
+- Se logra obtener las credenciales de los usuarios para poder ingresar al sistema web y así conseguir las credenciales de los microcontroladores. Se adjunta a continuación una imagen del sistema.
+  
+<img width="1690" alt="image" src="https://github.com/nseverini/ceiot_base/assets/46693419/8e200f2c-6a8f-497b-a708-b0e4988220ed">
 
 ### 5. Installation.
 Técnicas utilizadas: Proxy [T1090](https://attack.mitre.org/techniques/T1090/)
